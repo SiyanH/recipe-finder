@@ -1,20 +1,35 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import recipeReducer from "../reducers/recipeReducer";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
+import RecipeFinderComponent from "../components/RecipeFinderComponent";
 import Home from "../components/Home"
 import Register from "../components/users/Register"
 import Login from "../components/users/Login"
 import Profile from "../components/users/Profile"
 
-
+const store = createStore(recipeReducer);
 
 class LandingPageContainer extends Component {
     render() {
         return (
-            //<Provider store={store}>
+            <Provider store={store}>
                 <Router>
+                    <Switch>
+                        <Redirect exact from='/recipes/:query' to='/recipes/:query/0'/>
+                        <Route
+                            path={["/", "/recipes/:query/:index"]}
+                            exact={true}
+                            render={props =>
+                                <RecipeFinderComponent history={props.history}
+                                                       query={props.match.params.query}
+                                                       index={props.match.params.index}/>
+                            }/>
+                    </Switch>
 
                     <Route
-                        path="/"
+                        path="/home"
                         exact={true}
                         component={Home}
                     />
@@ -24,17 +39,17 @@ class LandingPageContainer extends Component {
                         component={Register}
                     />
                     <Route
-                    path="/profile"
-                    exact={true}
-                    component={Profile}
+                        path="/profile"
+                        exact={true}
+                        component={Profile}
                     />
                     <Route
-                    path="/login"
-                    exact={true}
-                    component={Login}
+                        path="/login"
+                        exact={true}
+                        component={Login}
                     />
                 </Router>
-            //</Provider>
+            </Provider>
         );
     }
 }
