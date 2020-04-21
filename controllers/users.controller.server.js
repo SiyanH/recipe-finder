@@ -36,17 +36,22 @@ module.exports = (app) => {
     app.post('/profile', profile)
     app.post('/register', register)
 
+    // register user
     app.post('/api/users', (req, res) => {
         const newUser = req.body
-        userDao.createU ser(newUser)
+        userDao.createUser(newUser)
             .then(actualUser => res.send(actualUser))
     })
 
+    // delete a user
     app.delete('/api/users/:userId', (req, res) => {
         const userId = req.params.userId;
         userDao.deleteUser(userId)
             .then(status => res.send(status))
     })
+
+
+    // validate user
     app.post('/api/login', (req, res) => {
         const username = req.body.username;
         const password = req.body.password;
