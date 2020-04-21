@@ -29,7 +29,7 @@ class LandingPageContainer extends Component {
                     </Switch>
 
                     <Route
-                        path="/home"
+                        path="/"
                         exact={true}
                         component={Home}
                     />

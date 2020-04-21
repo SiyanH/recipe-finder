@@ -12,6 +12,8 @@ export default class Register extends React.Component {
 //if username is already taken you have to get something else ***
     handleregister = (user) => register(user).then(newUser => this.props.history.push('./profile'))
 
+
+
     render() {
         return(
             <div>
@@ -49,6 +51,12 @@ export default class Register extends React.Component {
                     className={'btn btn-primary btn-block'}>
                     Register
                 </button>
+                <button
+                    onClick={() => this.props.history.push('./')}
+                    className={'btn btn-primary btn-block'}>
+                    Home
+                </button>
+
             </div>
         )
     }
