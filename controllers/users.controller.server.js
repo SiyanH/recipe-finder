@@ -38,7 +38,7 @@ module.exports = (app) => {
 
     app.post('/api/users', (req, res) => {
         const newUser = req.body
-        userDao.createU ser(newUser)
+        userDao.createUser(newUser)
             .then(actualUser => res.send(actualUser))
     })
 
