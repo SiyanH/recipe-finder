@@ -1,4 +1,4 @@
-const userModel = require('../models/users.model.server')
+const userModel = require('../models/user/user.model.server')
 
 const createUser = (user) => {
     return userModel.create(user)
