@@ -17,7 +17,7 @@ class LandingPageContainer extends Component {
         return (
             <Provider store={store}>
                 <Router>
-                    <NavbarComponent />
+                    <NavbarComponent/>
                     <Switch>
                         <Redirect exact from='/recipes/:query' to='/recipes/:query/0'/>
                         <Route
