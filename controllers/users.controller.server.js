@@ -36,17 +36,6 @@ module.exports = (app) => {
     app.post('/profile', profile)
     app.post('/register', register)
 
-    // update user
-    app.put('api/users/', (req, res) => {
-        const newuser = req.body
-        userDao.updateUser(newuser).then(
-            updatedUser => {
-                req.session['profile'] = updatedUser
-                res.send(updatedUser)
-            }
-        )
-    })
-
     // register user
     app.post('/api/users', (req, res) => {
         const newUser = req.body
@@ -77,7 +66,7 @@ module.exports = (app) => {
             .then(user => {
                 if(user) {
                     user.password = '****'
-                    req.session['profile'] = user;
+                    req.session['profile'] = user
                     return res.send(user)
                 } else {
                     return res.status(403).send({
@@ -87,19 +76,10 @@ module.exports = (app) => {
             })
     })
 
-
-
     // role for administrator
     app.get('/api/users', (req, res) =>
         userDao.findAllUsers()
             .then(allUsers => res.send(allUsers)))
-
-    // role for administrator
-    app.get('/api/users/:userId', (req, res) => {
-        const userId = req.params.userId
-        userDao.findUserById(userId).then(foundUser => res.send(foundUser))
-    })
-
 
 
 

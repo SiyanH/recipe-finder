@@ -18,7 +18,11 @@ export const login = (user) =>
 export const logout = () =>
     axios.post('/logout')
 
-//implement update user
 export const updateprofile = (user) =>
-    axios.put('/api/users/profile', user).then(res =>
-                                                   console.log(res))
+    axios.post( '/api/users',user).then(res =>
+                                            console.log(res))
+
+//implement update user
+// export const updateprofile = (user) =>
+//     axios.put('/api/users/profile', user).then(res =>
+//                                                    console.log(res))

@@ -9,8 +9,10 @@ export default class UpdateProfile extends React.Component {
         first: '',
         last: ''
     }
+//if username is already taken you have to get something else ***
+    handleupdate = (user) => updateprofile(user).then(newUser => this.props.history.push('./profile'))
 
-    handleUpdateUser = (user) => updateprofile(user).then(newUser => this.props.history.push('./profile'))
+
 
     render() {
         return(
@@ -45,9 +47,9 @@ export default class UpdateProfile extends React.Component {
                     type={"password"}
                     placeholder="last name"/>
                 <button
-                    onClick={() => this.handleUpdateUser(this.state)}
+                    onClick={() => this.handleupdate(this.state)}
                     className={'btn btn-primary btn-block'}>
-                    Update Profile
+                    UpdateProfileInformation
                 </button>
                 <button
                     onClick={() => this.props.history.push('./')}

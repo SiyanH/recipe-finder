@@ -14,16 +14,6 @@ const findUserById = (userId) => {
     )
 }
 
-const updateUser =
-    (newuser) => {
-    return userModel.update(
-        {
-         username: newuser.username
-        },
-        newuser
-    )
-    }
-
 const findUserByCredentials =
     (username, password) => {
         return userModel.findOne(
@@ -41,6 +31,5 @@ module.exports = {
     findAllUsers,
     findUserById,
     findUserByCredentials,
-    updateUser,
     deleteUser
 }
