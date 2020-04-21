@@ -8,6 +8,8 @@ import Home from "../components/Home"
 import Register from "../components/users/Register"
 import Login from "../components/users/Login"
 import Profile from "../components/users/Profile"
+import UpdateProfile from "../components/users/UpdateProfile"
+
 
 const store = createStore(recipeReducer);
 
@@ -42,6 +44,11 @@ class LandingPageContainer extends Component {
                         path="/profile"
                         exact={true}
                         component={Profile}
+                    />
+                    <Route
+                        path="/update-profile"
+                        exact={true}
+                        component={UpdateProfile}
                     />
                     <Route
                         path="/login"

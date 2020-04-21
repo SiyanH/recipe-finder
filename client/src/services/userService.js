@@ -17,3 +17,8 @@ export const login = (user) =>
 //implement login
 export const logout = () =>
     axios.post('/logout')
+
+//implement update user
+export const updateprofile = (user) =>
+    axios.put('/api/users/profile', user).then(res =>
+                                                   console.log(res))
