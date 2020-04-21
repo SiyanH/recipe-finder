@@ -36,24 +36,37 @@ module.exports = (app) => {
     app.post('/profile', profile)
     app.post('/register', register)
 
+    // register user
     app.post('/api/users', (req, res) => {
         const newUser = req.body
         userDao.createUser(newUser)
-            .then(actualUser => res.send(actualUser))
+            .then(actualUser => {
+                req.session['profile'] = actualUser
+                actualUser.password = '****'
+                res.send(actualUser)
+            })
     })
 
+    // delete a user
     app.delete('/api/users/:userId', (req, res) => {
         const userId = req.params.userId;
         userDao.deleteUser(userId)
             .then(status => res.send(status))
     })
+
+
+    // validate user
     app.post('/api/login', (req, res) => {
         const username = req.body.username;
         const password = req.body.password;
+
+        console.log({username, password})
+
         userDao.findUserByCredentials(username, password)
             .then(user => {
                 if(user) {
                     user.password = '****'
+                    req.session['profile'] = user
                     return res.send(user)
                 } else {
                     return res.status(403).send({
@@ -67,4 +80,10 @@ module.exports = (app) => {
     app.get('/api/users', (req, res) =>
         userDao.findAllUsers()
             .then(allUsers => res.send(allUsers)))
+
+    app.get('/api/users/profile', (req, res) => {
+        const profile = req.session['profile'];
+        //console.log({profile, session: req.session, profile2: req.session.profile})
+        return res.send(profile);
+    })
 }
