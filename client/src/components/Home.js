@@ -21,9 +21,10 @@ export default class Home extends React.Component {
     render() {
         return (
             <div>
-                <h1>Home</h1>
-                <a href="/courses">
-                    Courses
+                {/*<h1>Home</h1>*/}
+                <br/>
+                <a href="/">
+                    Home
                 </a>
                 <br/>
                 <a href="/register">

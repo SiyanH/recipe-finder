@@ -27,6 +27,11 @@ export default class Profile extends React.Component {
                 <p>{this.state.profile.first}</p>
                 <p>{this.state.profile.last}</p>
                 <p>{JSON.stringify(this.state.profile)}</p>
+                <button
+                    onClick={() => this.props.history.push('./')}
+                    className={'btn btn-primary btn-block'}>
+                    Home
+                </button>
             </div>
         )
     }
