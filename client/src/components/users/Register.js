@@ -9,8 +9,8 @@ export default class Register extends React.Component {
         first: '',
         last: ''
     }
-
-    register = (user) => register(user)
+//if username is already taken you have to get something else ***
+    handleregister = (user) => register(user).then(newUser => this.props.history.push('./profile'))
 
     render() {
         return(
@@ -45,7 +45,7 @@ export default class Register extends React.Component {
                     type={"password"}
                     placeholder="last name"/>
                 <button
-                    onClick={() => this.register(this.state)}
+                    onClick={() => this.handleregister(this.state)}
                     className={'btn btn-primary btn-block'}>
                     Register
                 </button>

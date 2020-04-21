@@ -1,6 +1,23 @@
 import React from "react";
+import {profile} from "../services/userService";
+import {logout} from "../services/userService";
 
 export default class Home extends React.Component {
+    state = {
+        profile: {
+            username: '',
+            password: '',
+            first: '',
+            last: '',
+            email: '',
+            roles: []
+        }
+    }
+    componentDidMount() {
+        profile().then(res => this.setState({
+                                                profile: res.data
+                                            }))
+    }
     render() {
         return (
             <div>
@@ -17,9 +34,15 @@ export default class Home extends React.Component {
                     Profile
                 </a>
                 <br/>
-                <a href="/login">
+                {this.state.profile.username && <a
+                    href="/logout"
+                    onClick={logout}
+                >
+                    Logout
+                </a>}
+                {!this.state.profile.username && <a href="/login">
                     Login
-                </a>
+                </a>}
             </div>
         );
     }

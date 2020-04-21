@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+const session = require('express-session');
 // IMPORT MODELS
 require('./models/Product');
 
@@ -11,6 +11,12 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/food_app`, {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.use(bodyParser.json());
+
+app.use(session({
+                    resave: false,
+                    saveUninitialized: true,
+                    secret: 'any string'
+                }));
 
 //IMPORT ROUTES
 require('./routes/productRoutes')(app);
