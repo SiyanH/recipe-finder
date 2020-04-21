@@ -81,11 +81,27 @@ module.exports = (app) => {
         userDao.findAllUsers()
             .then(allUsers => res.send(allUsers)))
 
+    // role for administrator
+    app.get('/api/users/:userId', (req, res) => {
+        const userId = req.params.userId
+        userDao.findUserById(userId).then(userFound => res.send(userFound))})
 
 
     app.get('/api/users/profile', (req, res) => {
         const profile = req.session['profile'];
+        userDao.findUserById()
         //console.log({profile, session: req.session, profile2: req.session.profile})
         return res.send(profile);
+    })
+
+    app.post('/api/users/profile', (req, res) => {
+        res.send(req.session['profile'])
+    })
+
+    //call for update user
+    app.put('/api/users/:userId', (req, res) => {
+        const userId = req.params.userId
+        const newUser = req.body
+        userDao.updateUser(userId,newUser).then(updatedUser => res.send(updatedUser))
     })
 }
