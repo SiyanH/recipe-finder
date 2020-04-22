@@ -14,6 +14,7 @@ import Register from "../components/users/Register";
 import Login from "../components/users/Login";
 import Profile from "../components/users/Profile";
 import UpdateProfile from "../components/users/UpdateProfile";
+import SubscribeToOthers from "../components/users/SubscribToOthers";
 
 const store = createStore(recipeReducer);
 
@@ -45,6 +46,11 @@ class LandingPageContainer extends Component {
             path="/update-profile"
             exact={true}
             component={UpdateProfile}
+          />
+          <Route
+            path="/subscribe-to-others"
+            exact={true}
+            component={SubscribeToOthers}
           />
         </Router>
       </Provider>

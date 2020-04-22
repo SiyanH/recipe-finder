@@ -1,12 +1,5 @@
 import React from "react";
 import { profile, updateSubscribers } from "../../services/userService";
-import RecipeFinderComponent from "../../containers/LandingPageContainer";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
 
 export default class Profile extends React.Component {
   state = {
@@ -46,21 +39,11 @@ export default class Profile extends React.Component {
         >
           Update Profile Information
         </button>
-        <input
-          value={this.state.profile.profileUrl}
-          onChange={(e) =>
-            this.setState({
-              profileUrl: e.target.value,
-            })
-          }
-          className={"form-control"}
-          placeholder="url"
-        />
         <button
-          onClick={() => this.handleSubscribers(this.state.profile)}
+          onClick={() => this.props.history.push("./subscribe-to-others")}
           className={"btn btn-primary btn-block"}
         >
-          Subscribe
+          Subscribe to Other Users
         </button>
         <button
           onClick={() => this.props.history.push("./")}

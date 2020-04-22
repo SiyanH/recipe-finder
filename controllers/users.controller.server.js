@@ -35,6 +35,7 @@ module.exports = (app) => {
   // register user
   app.post("/api/users", (req, res) => {
     const newUser = req.body;
+    console.log(JSON.stringify(req.body));
     userDao.createUser(newUser).then((actualUser) => {
       req.session["profile"] = actualUser;
       actualUser.password = "****";
@@ -116,6 +117,7 @@ module.exports = (app) => {
   //add recipe from api
   app.post("/api/users/edamamrecipes", (req, res) => {
     //variable for recipe
+    console.log(JSON.stringify(req.body));
     const profile = req.session["profile"];
     const { url } = req.body;
     console.log({ url });
@@ -128,9 +130,11 @@ module.exports = (app) => {
   //add subscriber url
   app.post("/api/users/subscribers", (req, res) => {
     //variable for recipe
-    const profile = req.session["profile"];
-    const profileUrl = req.body.profileInput;
+    console.log(JSON.stringify(req.body));
+    const profileUrl = req.body.profileUrlInfo;
     console.log({ profileUrl });
+
+    const profile = req.session["profile"];
     const userId = profile._id;
     userDao
       .addSubscriberToUser(profileUrl, userId)
