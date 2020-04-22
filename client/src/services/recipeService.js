@@ -9,7 +9,7 @@ import fetchJsonp from "fetch-jsonp";
  * @param to last result index (exclusive)
  */
 export const findRecipes = (query, from, to) => {
-    return fetchJsonp(`${API}&q=${query}&from=${from}&to=${to}`)
+    return fetchJsonp(`${API}&q=${query}&to=100`)
         .then(response => response.json())
         .then(result => result.hits);
 };

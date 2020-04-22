@@ -15,7 +15,8 @@ const RecipeFinderComponent = ({history, query, index}) =>
         {
             query !== undefined &&
             <SearchResultContainer query={query}
-                                   index={index}/>
+                                   index={index}
+                                   history={history}/>
         }
     </div>;
 
