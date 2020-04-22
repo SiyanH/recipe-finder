@@ -19,6 +19,9 @@ export const updateprofile = (user) => axios.put(`/api/users`, user);
 export const addrecipetouser = (recipe) =>
   axios.post("/api/users/edamamrecipes", recipe);
 
+export const updateSubscribers = (user) =>
+  axios.post("/api/users/subscribers", user).then((res) => console.log(res));
+
 //implement update user
 // export const updateprofile = (user) =>
 //     axios.put('/api/users/profile', user).then(res =>

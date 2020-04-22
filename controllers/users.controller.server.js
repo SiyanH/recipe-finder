@@ -124,4 +124,16 @@ module.exports = (app) => {
       .addEdamamRecipeToUser(url, userId)
       .then((updatedUser) => res.send(updatedUser));
   });
+
+  //add subscriber url
+  app.post("/api/users/subscribers", (req, res) => {
+    //variable for recipe
+    const profile = req.session["profile"];
+    const profileUrl = req.body.username;
+    console.log({ profileUrl });
+    const userId = profile._id;
+    userDao
+      .addSubscriberToUser(profileUrl, userId)
+      .then((updatedUser) => res.send(updatedUser));
+  });
 };

@@ -15,11 +15,13 @@ const findUserById = (userId) => {
 const addEdamamRecipeToUser = async (url, userId) => {
   const user = await findUserById(userId);
   console.log({ user });
-  return userModel.update(
+  //query to find it, updated data, return the actual data
+  return userModel.updateOne(
     {
       _id: userId,
     },
-    { recipesFromApi: user.recipesFromApi.concat(url) }
+    { recipesFromApi: user.recipesFromApi.concat(url) },
+    { new: true }
   );
 };
 
@@ -47,6 +49,31 @@ const findUserByCredentials = (username, password) => {
 
 const deleteUser = (uid) => userModel.deleteOne({ _id: uid });
 
+//Add subscribers to our user
+const addSubscriberToUser = async (profileUrl, userId) => {
+  const user = await findUserById(userId);
+  console.log({ user });
+  return userModel.updateOne(
+    {
+      _id: userId,
+    },
+    { subscribers: user.subscribers.concat(profileUrl) },
+    { new: true }
+  );
+};
+
+//Add a list of profiles the user has subscribed to
+const addSubscription = async (profileUrl, userId) => {
+  const user = await findUserById(userId);
+  console.log({ user });
+  return userModel.update(
+    {
+      id: userId,
+    },
+    { subscribed: user.subscribed.concat(profileUrl) }
+  );
+};
+
 // TODO: Find all recipes for user
 
 module.exports = {
@@ -58,4 +85,5 @@ module.exports = {
   deleteUser,
   updateUser,
   addCreatedRecipeToUser,
+  addSubscriberToUser,
 };

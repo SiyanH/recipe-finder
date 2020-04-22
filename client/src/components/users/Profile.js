@@ -1,5 +1,5 @@
 import React from "react";
-import { profile } from "../../services/userService";
+import { profile, updateSubscribers } from "../../services/userService";
 import RecipeFinderComponent from "../../containers/LandingPageContainer";
 import {
   BrowserRouter as Router,
@@ -27,20 +27,29 @@ export default class Profile extends React.Component {
       })
     );
   }
+  handleSubscribers = (user) =>
+    updateSubscribers(user).then(console.log({ user }));
 
   render() {
+    const urlTest = "hello there";
     return (
       <div>
         <h1>Profile</h1>
+        console.log({urlTest});
         <p>{this.state.profile.first}</p>
         <p>{this.state.profile.last}</p>
         <p>{JSON.stringify(this.state.profile)}</p>
-
         <button
           onClick={() => this.props.history.push("./update-profile")}
           className={"btn btn-primary btn-block"}
         >
           Update Profile Information
+        </button>
+        <button
+          onClick={() => this.handleSubscribers(this.state.profile)}
+          className={"btn btn-primary btn-block"}
+        >
+          Subscribe
         </button>
         <button
           onClick={() => this.props.history.push("./")}
