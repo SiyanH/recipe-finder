@@ -129,7 +129,7 @@ module.exports = (app) => {
   app.post("/api/users/subscribers", (req, res) => {
     //variable for recipe
     const profile = req.session["profile"];
-    const profileUrl = req.body.username;
+    const profileUrl = req.body.profileInput;
     console.log({ profileUrl });
     const userId = profile._id;
     userDao

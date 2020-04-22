@@ -17,6 +17,7 @@ export default class Profile extends React.Component {
       last: "",
       email: "",
       roles: [],
+      profileInput: "",
     },
   };
 
@@ -45,6 +46,16 @@ export default class Profile extends React.Component {
         >
           Update Profile Information
         </button>
+        <input
+          value={this.state.profile.profileUrl}
+          onChange={(e) =>
+            this.setState({
+              profileUrl: e.target.value,
+            })
+          }
+          className={"form-control"}
+          placeholder="url"
+        />
         <button
           onClick={() => this.handleSubscribers(this.state.profile)}
           className={"btn btn-primary btn-block"}
