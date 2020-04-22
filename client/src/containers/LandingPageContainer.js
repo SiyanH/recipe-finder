@@ -8,7 +8,7 @@ import Home from "../components/Home"
 import Register from "../components/users/Register"
 import Login from "../components/users/Login"
 import Profile from "../components/users/Profile"
-import NavbarComponent from "../components/NavbarComponent";
+import UpdateProfile from "../components/users/UpdateProfile";
 
 const store = createStore(recipeReducer);
 
@@ -17,7 +17,6 @@ class LandingPageContainer extends Component {
         return (
             <Provider store={store}>
                 <Router>
-                    <NavbarComponent/>
                     <Switch>
                         <Redirect exact from='/recipes/:query' to='/recipes/:query/0'/>
                         <Route
@@ -49,6 +48,11 @@ class LandingPageContainer extends Component {
                         path="/login"
                         exact={true}
                         component={Login}
+                    />
+                    <Route
+                        path="/update-profile"
+                        exact={true}
+                        component={UpdateProfile}
                     />
                 </Router>
             </Provider>
