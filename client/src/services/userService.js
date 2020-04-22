@@ -19,7 +19,7 @@ export const logout = () =>
     axios.post('/logout')
 
 export const updateprofile = (user) =>
-    axios.put('/api/users/profile/${user._id}', {
+    axios.put(`/api/users/${user.username}`, {
         _id: user._id
     }).then(res => console.log(res))
 
