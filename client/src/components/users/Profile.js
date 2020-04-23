@@ -67,6 +67,16 @@ class Profile extends React.Component {
         >
           View Liked Recipes
         </button>
+
+        {this.props.profile.username && (
+          <button
+            onClick={() => this.props.history.push("./create-recipe")}
+            className="btn app-primary-button app-margin-block col-5"
+          >
+            Create Your Own Recipe!
+          </button>
+        )}
+
         <button
           onClick={() => this.props.history.push("./")}
           className="btn app-primary-button app-margin-block col-5"

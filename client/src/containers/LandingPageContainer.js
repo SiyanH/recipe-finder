@@ -19,6 +19,8 @@ import SubscribeToOthers from "../components/users/SubscribToOthers";
 import ManageUsers from "../components/users/ManageUsers";
 import DeleteUsers from "../components/users/DeleteUsers";
 import LikedRecipesComponent from "../components/users/LikedRecipesComponent";
+import UserCreatedRecipe from "../components/users/UserCreatedRecipe";
+
 import Home from "../components/Home";
 
 import userReducer from "../reducers/userReducer";
@@ -72,6 +74,11 @@ class LandingPageContainer extends Component {
             path="/liked-recipes"
             exact={true}
             component={LikedRecipesComponent}
+          />
+          <Route
+            path="/create-recipe"
+            exact={true}
+            component={UserCreatedRecipe}
           />
         </Router>
       </Provider>

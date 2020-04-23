@@ -20,6 +20,9 @@ export const updateProfile = (user) => axios.put(`/api/users`, user);
 export const addRecipeToUser = (recipe) =>
   axios.post("/api/users/edamamrecipes", recipe);
 
+//add usercreated recipe
+export const createRecipe = (recipe) => axios.post("/api/recipes", recipe);
+
 //handle user subscription
 export const updateSubscribers = (user) =>
   axios
