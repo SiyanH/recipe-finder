@@ -156,4 +156,10 @@ module.exports = (app) => {
     console.log(profileId);
     userDao.addSubscriptionToOtherParty(profileUrl, profileId);
   });
+
+  // delete a user
+  app.delete("/api/users/delete/:user", (req, res) => {
+    const userName = req.params.user;
+    userDao.deleteUserByUserName(userName).then((status) => res.send(status));
+  });
 };

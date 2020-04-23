@@ -33,6 +33,10 @@ export const updateOtherParty = (user) =>
 //Get all users on the database
 export const getAllUsers = () => axios.get("/api/users");
 
+//Delete users on the database
+export const deleteUsers = (user) =>
+  axios.delete(`/api/users/delete/${user}`).then((res) => console.log(res));
+
 //implement update user
 // export const updateprofile = (user) =>
 //     axios.put('/api/users/profile', user).then(res =>
