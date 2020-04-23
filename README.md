@@ -1,4 +1,4 @@
-# node-react-starter
+# wbdv-project-team2
 this is the file structure and package.json configuration we are following for deployment
 - cd node-react-starter
 - package.json in node-react-starter can be installed with npm install
