@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import "./SearchBarComponent.css";
+import "../common/style.css";
 
 class SearchBarComponent extends Component {
     state = {

@@ -45,7 +45,6 @@ export default class Register extends React.Component {
             })
           }
           className={"form-control"}
-          type={"password"}
           placeholder="first name"
         />
         <input
@@ -56,7 +55,6 @@ export default class Register extends React.Component {
             })
           }
           className={"form-control"}
-          type={"password"}
           placeholder="last name"
         />
         <button

@@ -16,8 +16,8 @@ export default class UpdateProfile extends React.Component {
     return (
       <div>
         <h1>Update Profile</h1>
-        <p>{JSON.stringify(this.state)}</p>
-        <p>{this.state.last}</p>
+        {/*<p>{JSON.stringify(this.state)}</p>*/}
+        {/*<p>{this.state.last}</p>*/}
         <input
           value={this.state.username}
           onChange={(e) =>

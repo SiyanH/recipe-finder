@@ -3,13 +3,14 @@ import FileUpload from "./FileUpload";
 import SearchBarComponent from "./SearchBarComponent";
 import SearchResultContainer from "../containers/SearchResultContainer";
 
-const RecipeFinderComponent = ({history, query, index}) =>
-    <div className='container mt-4 mb-4'>
-        <h4 className='display-4 text-center mt-4'>
-            <i className='fas fa-cookie-bite'/> Recipes Finder
-        </h4>
+const RecipeFinderComponent = ({ history, query, index }) => (
+  <div className='container mt-4'>
+      <h4 className='app-header-font text-center mt-4'>
+          The best way to search for you favorite recipes!
+      </h4>
+      <h4 className='app-big-font'>Search with Images</h4>
         <FileUpload/>
-        <p className="text-center">Or search by keywords...</p>
+        <h4 className='app-big-font'>Search with Words</h4>
         <SearchBarComponent history={history}
                             query={query}/>
         {

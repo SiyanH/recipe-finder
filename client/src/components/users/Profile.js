@@ -2,13 +2,15 @@ import React from "react";
 import {profile, updateSubscribers} from "../../services/userService";
 import {findProfile} from "../../actions/userActions";
 import {connect} from "react-redux";
+import "../../common/style.css";
+
 
 class Profile extends React.Component {
     componentDidMount() {
         this.props.findProfile().then();
 
     }
-
+  
     render() {
         return (
             <div>
@@ -18,35 +20,35 @@ class Profile extends React.Component {
                 <p>{JSON.stringify(this.props.profile)}</p>
                 <button
                     onClick={() => this.props.history.push("./update-profile")}
-                    className={"btn btn-primary btn-block"}
+                    className='btn app-primary-button app-margin-block col-5'
                 >
                     Update Profile Information
                 </button>
                 <button
                     onClick={() => this.props.history.push("./manage-users")}
-                    className={"btn btn-primary btn-block"}
+                    className='btn app-primary-button app-margin-block col-5'
                 >
                     Manage Users
                 </button>
                 <button
                     onClick={() => this.props.history.push("./delete-user")}
-                    className={"btn btn-primary btn-block"}
+                    className='btn app-primary-button app-margin-block col-5'
                 >
                     Delete User
                 </button>
                 <button
                     onClick={() => this.props.history.push("./subscribe-to-others")}
-                    className={"btn btn-primary btn-block"}
+                    className='btn app-primary-button app-margin-block col-5'
                 >
                     Subscribe to Other Users
                 </button>
                 <button
                     onClick={() => this.props.history.push("./liked-recipes")}
-                    className={"btn btn-primary btn-block"}>View Liked Recipes
+                    className='btn app-primary-button app-margin-block col-5'>View Liked Recipes
                 </button>
                 <button
                     onClick={() => this.props.history.push("./")}
-                    className={"btn btn-primary btn-block"}
+                    className='btn app-primary-button app-margin-block col-5'
                 >
                     Home
                 </button>
