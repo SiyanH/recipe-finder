@@ -13,9 +13,9 @@ export const login = (user) => axios.post("/api/login", user);
 //implement login
 export const logout = () => axios.post("/logout");
 
-export const updateprofile = (user) => axios.put(`/api/users`, user);
+export const updateProfile = (user) => axios.put(`/api/users`, user);
 
-export const addrecipetouser = (recipe) =>
+export const addRecipeToUser = (recipe) =>
   axios.post("/api/users/edamamrecipes", recipe);
 
 export const updateSubscribers = (user) =>
