@@ -23,10 +23,10 @@ class Profile extends React.Component {
                     Update Profile Information
                 </button>
                 <button
-                    onClick={() => this.props.history.push("./view-all-users")}
+                    onClick={() => this.props.history.push("./manage-users")}
                     className={"btn btn-primary btn-block"}
                 >
-                    View All Users
+                    Manage Users
                 </button>
                 <button
                     onClick={() => this.props.history.push("./delete-user")}

@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import {deleteUsers} from "../../services/userService";
+import {deleteUsers, updateOtherParty, updateSubscribers} from "../../services/userService";
 
-export default class ViewUsers extends React.Component {
+export default class ManageUsers extends React.Component {
     state = {users: []};
 
     componentDidMount() {
@@ -21,6 +21,12 @@ export default class ViewUsers extends React.Component {
                 state.users.splice(index, 1);
                 return {users: state.users};
             }));
+
+    subscribe = (username) => {
+        updateSubscribers(username)
+            .then(() => updateOtherParty(username))
+            .then(() => alert(`You followed ${username}`));
+    };
 
     render() {
         return (
@@ -43,9 +49,12 @@ export default class ViewUsers extends React.Component {
                                 <td>{user.first}</td>
                                 <td>{user.last}</td>
                                 <td>
-                                    <button className="btn btn-primary btn-sm"
+                                    <button className="btn btn-primary btn-sm mr-3"
                                             onClick={() =>
                                                 this.deleteUser(user.username, index)}>Delete
+                                    </button>
+                                    <button className="btn btn-primary btn-sm"
+                                            onClick={() => this.subscribe(user.username)}>Subscribe
                                     </button>
                                 </td>
                             </tr>))

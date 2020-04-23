@@ -15,7 +15,7 @@ import Login from "../components/users/Login";
 import Profile from "../components/users/Profile";
 import UpdateProfile from "../components/users/UpdateProfile";
 import SubscribeToOthers from "../components/users/SubscribToOthers";
-import ViewUsers from "../components/users/ViewUsers";
+import ManageUsers from "../components/users/ManageUsers";
 import DeleteUsers from "../components/users/DeleteUsers";
 import LikedRecipesComponent from "../components/users/LikedRecipesComponent";
 import userReducer from "../reducers/userReducer";
@@ -57,7 +57,7 @@ class LandingPageContainer extends Component {
                         exact={true}
                         component={SubscribeToOthers}
                     />
-                    <Route path="/view-all-users" exact={true} component={ViewUsers}/>
+                    <Route path="/manage-users" exact={true} component={ManageUsers}/>
                     <Route path="/delete-user" exact={true} component={DeleteUsers}/>
                     <Route path="/liked-recipes" exact={true} component={LikedRecipesComponent}/>
                 </Router>
