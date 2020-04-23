@@ -9,8 +9,8 @@ class RecipeComponent extends React.Component {
     };
 
     addRecipe = (recipe) => {
-        this.setState({isAdded: true});
         addRecipeToUser(recipe)
+            .then(() => this.setState({isAdded: true}))
             .catch(() => alert("Please login to add recipes"));
     };
 
