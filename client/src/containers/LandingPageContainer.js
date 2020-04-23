@@ -15,6 +15,8 @@ import Login from "../components/users/Login";
 import Profile from "../components/users/Profile";
 import UpdateProfile from "../components/users/UpdateProfile";
 import SubscribeToOthers from "../components/users/SubscribToOthers";
+import ViewUsers from "../components/users/ViewUsers";
+import DeleteUsers from "../components/users/DeleteUsers";
 
 const store = createStore(recipeReducer);
 
@@ -52,6 +54,8 @@ class LandingPageContainer extends Component {
             exact={true}
             component={SubscribeToOthers}
           />
+          <Route path="/view-all-users" exact={true} component={ViewUsers} />
+          <Route path="/delete-user" exact={true} component={DeleteUsers} />
         </Router>
       </Provider>
     );

@@ -40,6 +40,18 @@ export default class Profile extends React.Component {
           Update Profile Information
         </button>
         <button
+          onClick={() => this.props.history.push("./view-all-users")}
+          className={"btn btn-primary btn-block"}
+        >
+          View All Users
+        </button>
+        <button
+          onClick={() => this.props.history.push("./delete-user")}
+          className={"btn btn-primary btn-block"}
+        >
+          Delete User
+        </button>
+        <button
           onClick={() => this.props.history.push("./subscribe-to-others")}
           className={"btn btn-primary btn-block"}
         >
