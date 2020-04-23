@@ -26,7 +26,7 @@ export default class Login extends React.Component {
     return (
       <div>
         <h1>Login</h1>
-        <p>{JSON.stringify(this.state)}</p>
+        {/*<p>{JSON.stringify(this.state)}</p>*/}
         {this.state.error && <p>You're password and username doesn't match</p>}
         <input
           value={this.state.user.username}

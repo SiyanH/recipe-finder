@@ -21,7 +21,7 @@ export default class SubscribeToOthers extends React.Component {
     return (
       <div>
         <h1>Subscribe to Others!</h1>
-        <p>{JSON.stringify(this.state)}</p>
+        {/*<p>{JSON.stringify(this.state)}</p>*/}
         <input
           value={this.state.profileUrlInfo}
           onChange={(e) =>

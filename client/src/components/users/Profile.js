@@ -25,15 +25,12 @@ export default class Profile extends React.Component {
     updateSubscribers(user).then(console.log({ user }));
 
   render() {
-    const urlTest = "hello there";
-    const listItems = this.state.profile.subscribeToOthers;
     return (
       <div>
         <h1>Profile</h1>
-        console.log({urlTest});
-        <p>{this.state.profile.first}</p>
-        <p>{this.state.profile.last}</p>
-        <p>{JSON.stringify(this.state.profile)}</p>
+        <p>User FirstName: {this.state.profile.first}</p>
+        <p>User LastName{this.state.profile.last}</p>
+        {/*<p>{JSON.stringify(this.state.profile)}</p>*/}
         <button
           onClick={() => this.props.history.push("./update-profile")}
           className={"btn btn-primary btn-block"}
@@ -65,7 +62,7 @@ export default class Profile extends React.Component {
           Home
         </button>
         <h5>Cooks I follow!</h5>
-        <p>{listItems}</p>
+        <p>{this.state.profile.subscribeToOthers}</p>
         <h5>Cooks that follow me!</h5>
         <p>{this.state.profile.subscriptionsFromOthers}</p>
       </div>
