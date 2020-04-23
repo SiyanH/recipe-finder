@@ -22,21 +22,20 @@ export default class Home extends React.Component {
   }
   render() {
     return (
-      <div>
-
+      <div className="container mt-4">
         {/*<h1>Home</h1>*/}
-        <br />
-        <a href="/">Home</a>
-        <br />
-        <a href="/register">Register</a>
-        <br />
-        <a href="/profile">Profile</a>
-        <br />
+        {/*<br />*/}
+        {/*<a href="/">Home</a>*/}
+        {!this.state.profile.username && <a href="/register">Register</a>}
+
+        {/*<a href="/profile">Profile</a>*/}
+        {/*<br />*/}
         {this.state.profile.username && (
           <a href="/logout" onClick={logout}>
             Logout
           </a>
         )}
+        <br />
         {!this.state.profile.username && <a href="/login">Login</a>}
       </div>
     );
