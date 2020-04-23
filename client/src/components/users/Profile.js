@@ -4,25 +4,10 @@ import {findProfile} from "../../actions/userActions";
 import {connect} from "react-redux";
 
 class Profile extends React.Component {
-    // state = {
-    //     profile: {
-    //         username: "",
-    //         password: "",
-    //         first: "",
-    //         last: "",
-    //         email: "",
-    //         roles: [],
-    //         profileInput: "",
-    //     },
-    // };
-
     componentDidMount() {
         this.props.findProfile().then();
 
     }
-
-    // handleSubscribers = (user) =>
-    //     updateSubscribers(user).then(() => console.log({user}));
 
     render() {
         return (
