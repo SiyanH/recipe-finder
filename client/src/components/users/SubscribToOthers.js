@@ -1,22 +1,15 @@
 import React from "react";
-import {
-  updateSubscribers,
-  updateOtherParty,
-} from "../../services/userService";
+import { subscribe } from "../../services/userService";
 import "../../common/style.css";
 
+// COMPONENT NOT IN USE
 export default class SubscribeToOthers extends React.Component {
   state = {
     profileUrlInfo: "",
   };
   //if username is already taken you have to get something else ***
   handleSubscriber = (user) =>
-    updateSubscribers(user).then((user) =>
-      this.props.history.push("./profile")
-    );
-
-  handleOtherParty = (user) =>
-    updateOtherParty(user).then((user) => console.log(user));
+    subscribe(user).then((user) => this.props.history.push("./profile"));
 
   render() {
     return (
@@ -34,21 +27,36 @@ export default class SubscribeToOthers extends React.Component {
           placeholder="username"
         />
 
-        <button
-          onClick={() =>
-            this.handleSubscriber(this.state) &&
-            this.handleOtherParty(this.state)
-          }
-          className="btn app-primary-button app-margin-block col-5"
-        >
-          Confirm Subscription
-        </button>
-        <button
-          onClick={() => this.props.history.push("./")}
-          className="btn app-primary-button app-margin-block col-5"
-        >
-          Home
-        </button>
+        {/*<<<<<<< HEAD*/}
+        {/*<button*/}
+        {/*onClick={() => this.handleSubscriber(this.state)}*/}
+        {/*className="btn app-primary-button app-margin-block col-5"*/}
+        {/*>*/}
+        {/*Confirm Subscription*/}
+        {/*</button>*/}
+        {/*<button*/}
+        {/*onClick={() => this.props.history.push("./")}*/}
+        {/*className="btn app-primary-button app-margin-block col-5"*/}
+        {/*>*/}
+        {/*Home*/}
+        {/*</button>*/}
+        {/*=======*/}
+        {/*<button*/}
+        {/*onClick={() =>*/}
+        {/*this.handleSubscriber(this.state) &&*/}
+        {/*this.handleOtherParty(this.state)*/}
+        {/*}*/}
+        {/*className="btn app-primary-button app-margin-block col-5"*/}
+        {/*>*/}
+        {/*Confirm Subscription*/}
+        {/*</button>*/}
+        {/*<button*/}
+        {/*onClick={() => this.props.history.push("./")}*/}
+        {/*className="btn app-primary-button app-margin-block col-5"*/}
+        {/*>*/}
+        {/*Home*/}
+        {/*</button>*/}
+        {/*>>>>>>> master*/}
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import { logout, profile, updateSubscribers } from "../../services/userService";
+import { profile } from "../../services/userService";
 import { findProfile } from "../../actions/userActions";
 import { connect } from "react-redux";
 import "../../common/style.css";
@@ -13,10 +13,10 @@ class Profile extends React.Component {
     return (
       <div className="container mt-4 mb-4">
         {this.props.profile.username && this.props.profile.role === "ADMIN" && (
-          <h1 class="jumbotron">Admin Profile</h1>
+          <h1 className="jumbotron">Admin Profile</h1>
         )}
         {this.props.profile.username && this.props.profile.role === "USER" && (
-          <h1 class="jumbotron">User Profile</h1>
+          <h1 className="jumbotron">User Profile</h1>
         )}
 
         {this.props.profile.username && (
@@ -36,37 +36,21 @@ class Profile extends React.Component {
           Update Profile Information
         </button>
 
-        {this.props.profile.role === "ADMIN" && (
-          <button
-            onClick={() => this.props.history.push("./manage-users")}
-            className="btn app-primary-button app-margin-block col-5"
-          >
-            Manage Users
-          </button>
-        )}
-
-        {this.props.profile.role === "ADMIN" && (
-          <button
-            onClick={() => this.props.history.push("./delete-user")}
-            className="btn app-primary-button app-margin-block col-5"
-          >
-            Delete User
-          </button>
-        )}
-
         <button
-          onClick={() => this.props.history.push("./subscribe-to-others")}
+          onClick={() => this.props.history.push("./user-list")}
           className="btn app-primary-button app-margin-block col-5"
         >
-          Subscribe to Other Users
+          User List
         </button>
 
-        <button
-          onClick={() => this.props.history.push("./liked-recipes")}
-          className="btn app-primary-button app-margin-block col-5"
-        >
-          View Liked Recipes
-        </button>
+        {this.props.profile.username && (
+          <button
+            onClick={() => this.props.history.push("./liked-recipes")}
+            className="btn app-primary-button app-margin-block col-5"
+          >
+            View Liked Recipes
+          </button>
+        )}
 
         {this.props.profile.username && (
           <button

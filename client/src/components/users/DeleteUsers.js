@@ -1,13 +1,14 @@
 import React from "react";
-import { deleteUsers } from "../../services/userService";
+import { deleteUser } from "../../services/userService";
 
+// COMPONENT NOT IN USE
 export default class SubscribeToOthers extends React.Component {
   state = {
     deleteUserName: "",
   };
   //if username is already taken you have to get something else ***
   handleDeleteUser = (user) =>
-    deleteUsers(user).then((user) => this.props.history.push("./profile"));
+    deleteUser(user).then((user) => this.props.history.push("./profile"));
 
   render() {
     return (
