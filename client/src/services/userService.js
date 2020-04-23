@@ -1,5 +1,4 @@
 import axios from "axios";
-import qs from "qs";
 
 //register a user
 export const register = (user) =>
@@ -15,10 +14,10 @@ export const login = (user) => axios.post("/api/login", user);
 export const logout = () => axios.post("/logout");
 
 //update user profile
-export const updateprofile = (user) => axios.put(`/api/users`, user);
+export const updateProfile = (user) => axios.put(`/api/users`, user);
 
 //add a recipe to user from the api
-export const addrecipetouser = (recipe) =>
+export const addRecipeToUser = (recipe) =>
   axios.post("/api/users/edamamrecipes", recipe);
 
 //handle user subscription

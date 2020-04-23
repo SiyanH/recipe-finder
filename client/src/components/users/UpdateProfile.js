@@ -1,5 +1,5 @@
 import React from "react";
-import { updateprofile } from "../../services/userService";
+import { updateProfile } from "../../services/userService";
 
 export default class UpdateProfile extends React.Component {
   state = {
@@ -10,7 +10,7 @@ export default class UpdateProfile extends React.Component {
   };
   //if username is already taken you have to get something else ***
   handleupdate = (user) =>
-    updateprofile(user).then((newUser) => this.props.history.push("./profile"));
+    updateProfile(user).then((newUser) => this.props.history.push("./profile"));
 
   render() {
     return (

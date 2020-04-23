@@ -1,8 +1,14 @@
-import {FIND_RECIPES, FIND_RECIPE, RESET_RECIPES} from "../actions/recipeActions";
+import {
+    FIND_RECIPES,
+    FIND_RECIPE,
+    RESET_RECIPES,
+    FIND_RECIPE_LIST
+} from "../actions/recipeActions";
 
 const initialState = {
     recipes: [],
-    currentRecipeInfo: {}
+    recipeList: [],
+    currentRecipeInfo: {recipe: {ingredientLines: []}}
 };
 
 const recipeReducer = (state = initialState, action) => {
@@ -15,7 +21,12 @@ const recipeReducer = (state = initialState, action) => {
         case FIND_RECIPE:
             return {
                 ...state,
-                currentRecipeInfo: state.recipes[action.index]
+                currentRecipeInfo: state.recipeList[action.index]
+            };
+        case FIND_RECIPE_LIST:
+            return {
+                ...state,
+                recipeList: state.recipes.slice(action.from, action.to)
             };
         case RESET_RECIPES:
             return initialState;

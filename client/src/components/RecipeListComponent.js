@@ -2,12 +2,16 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import './RecipeListComponent.css';
 
-//TODO: Add pagination (10 recipes per page)
-//TODO: Highlight selected recipe
 class RecipeListComponent extends Component {
     state = {
-        currentRecipe: Number(this.props.index)
+        currentRecipe: Number(this.props.index) % 10
     };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.index !== this.props.index) {
+            this.setState({currentRecipe: Number(this.props.index) % 10})
+        }
+    }
 
     setRecipe = (index) => {
         this.setState({currentRecipe: index})
@@ -17,7 +21,7 @@ class RecipeListComponent extends Component {
         return (
             <div className="list-group app-recipe-list">
                 {
-                    this.props.recipes.slice(this.props.from, this.props.to)
+                    this.props.recipes
                         .map((recipeInfo, index) =>
                                  <Link key={index}
                                        to={`/recipes/${this.props.query}/${this.props.from
