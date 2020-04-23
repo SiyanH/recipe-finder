@@ -122,9 +122,9 @@ module.exports = (app) => {
     const { url } = req.body;
     console.log({ url });
     const userId = profile._id;
-    userDao
-      .addEdamamRecipeToUser(url, userId)
-      .then((updatedUser) => res.send(updatedUser));
+    userDao.addEdamamRecipeToUser(url, userId).then((updatedUser) => {
+      res.send(updatedUser);
+    });
   });
 
   //add subscriber url
@@ -154,7 +154,7 @@ module.exports = (app) => {
     const profile = req.session["profile"];
     const profileId = profile._id;
     console.log(profileId);
-    userDao.addSubscriptionToOtherParty(profileUrl, profileId);
+    userDao.addSubscriptionToOtherParty(profileUrl, profile);
   });
 
   // delete a user

@@ -66,7 +66,7 @@ const subscribeToOthers = async (profileUrl, userId) => {
     {
       _id: userId,
     },
-    { subscribeToOthers: user.subscribeToOthers.concat(user._id) },
+    { subscribeToOthers: user.subscribeToOthers.concat(user.username) },
     { new: true }
   );
 };
@@ -74,16 +74,17 @@ const subscribeToOthers = async (profileUrl, userId) => {
 //Add a list of profiles the user has subscribed to
 //find another user by Id
 //update that user with the current users id
-const addSubscriptionToOtherParty = async (otherPartyId, currentUserId) => {
+const addSubscriptionToOtherParty = async (otherPartyId, currentUser) => {
   const otherUser = await findUserByUserName(otherPartyId);
   console.log({ otherUser });
+  console.log({ currentUser });
   return userModel.updateOne(
     {
       _id: otherUser._id,
     },
     {
       subscriptionsFromOthers: otherUser.subscriptionsFromOthers.concat(
-        currentUserId
+        currentUser.username
       ),
     },
     { new: true }

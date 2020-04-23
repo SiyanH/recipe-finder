@@ -26,6 +26,7 @@ export default class Profile extends React.Component {
 
   render() {
     const urlTest = "hello there";
+    const listItems = this.state.profile.subscribeToOthers;
     return (
       <div>
         <h1>Profile</h1>
@@ -63,7 +64,9 @@ export default class Profile extends React.Component {
         >
           Home
         </button>
-        <p>{this.state.profile.subscribeToOthers}</p>
+        <h5>Cooks I follow!</h5>
+        <p>{listItems}</p>
+        <h5>Cooks that follow me!</h5>
         <p>{this.state.profile.subscriptionsFromOthers}</p>
       </div>
     );
