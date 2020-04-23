@@ -1,5 +1,6 @@
 import React from "react";
 import { register } from "../../services/userService";
+import "../../common/style.css";
 
 export default class Register extends React.Component {
   state = {

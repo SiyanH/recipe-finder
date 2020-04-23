@@ -11,7 +11,7 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container mt-4 mb-4">
         {this.props.profile.username && this.props.profile.role === "ADMIN" && (
           <h1 class="jumbotron">Admin Profile</h1>
         )}

@@ -22,14 +22,14 @@ class SearchBarComponent extends Component {
         return (
             <div className="input-group app-search-bar">
                 <label className="sr-only" htmlFor="recipeSearchFld">Recipe name</label>
-                <input id="recipeSearchFld" className="form-control"
+                <input id="recipeSearchFld" className="form-control col-6"
                        placeholder="Search recipes..." type="text"
                        defaultValue={this.state.query}
                        onChange={e => this.changeQuery(e.target.value)}
                        onKeyPress={e => this.submitQuery(e.key)}/>
                 <div className="input-group-append">
                     <Link to={`/recipes/${this.state.query}/0`}
-                          className="btn btn-outline-secondary" role="button">
+                          className="btn btn-outline-secondary app-secondary-button" role="button">
                         <i className="fas fa-search"></i>
                     </Link>
                 </div>
