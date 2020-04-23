@@ -1,26 +1,27 @@
 const mongoose = require("mongoose");
 const userSchema = mongoose.Schema(
-    {
-        username: String,
-        password: String,
-        first: String,
-        last: String,
-        recipes: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "RecipeModel",
-            },
-        ],
-        recipesFromApi: [String],
-        role: {
-            type: String,
-            enum: ["READER", "ADMIN", "Publisher"],
-        },
-        subscribeToOthers: [String],
-        subscriptionsFromOthers: [String],
+  {
+    username: String,
+    password: String,
+    first: String,
+    last: String,
+    useremail: String,
+    recipes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "RecipeModel",
+      },
+    ],
+    recipesFromApi: [String],
+    role: {
+      type: String,
+      enum: ["USER", "ADMIN"],
     },
+    subscribeToOthers: [String],
+    subscriptionsFromOthers: [String],
+  },
 
-    { collection: "users" }
+  { collection: "users" }
 );
 
 module.exports = userSchema;

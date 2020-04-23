@@ -7,10 +7,17 @@ export default class Register extends React.Component {
     password: "",
     first: "",
     last: "",
+    role: "",
   };
   //if username is already taken you have to get something else ***
   handleregister = (user) =>
     register(user).then((newUser) => this.props.history.push("./profile"));
+
+  onRadioChange = (e) => {
+    this.setState({
+      role: e.target.value,
+    });
+  };
 
   render() {
     return (
@@ -57,6 +64,31 @@ export default class Register extends React.Component {
           className={"form-control"}
           placeholder="last name"
         />
+        {/*<input*/}
+        {/*value={this.state.role}*/}
+        {/*onChange={(e) =>*/}
+        {/*this.setState({*/}
+        {/*role: e.target.value,*/}
+        {/*})*/}
+        {/*}*/}
+        {/*className={"form-control"}*/}
+        {/*placeholder="last name"*/}
+        {/*/>*/}
+
+        <input
+          type="radio"
+          name="role"
+          value="USER"
+          onChange={this.onRadioChange}
+        />
+        <span>USER</span>
+        <input
+          type="radio"
+          name="role"
+          value="ADMIN"
+          onChange={this.onRadioChange}
+        />
+        <span>ADMIN</span>
         <button
           onClick={() => this.handleregister(this.state)}
           className={"btn btn-primary btn-block"}

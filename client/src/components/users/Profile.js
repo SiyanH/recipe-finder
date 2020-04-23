@@ -1,5 +1,5 @@
 import React from "react";
-import { profile, updateSubscribers } from "../../services/userService";
+import { logout, profile, updateSubscribers } from "../../services/userService";
 import { findProfile } from "../../actions/userActions";
 import { connect } from "react-redux";
 import "../../common/style.css";
@@ -12,36 +12,55 @@ class Profile extends React.Component {
   render() {
     return (
       <div>
-        <h1>Profile</h1>
-        <p>
-          User: {this.props.profile.first} , {this.props.profile.last}
-        </p>
-        <p>Username: {this.props.profile.username}</p>
-        {/*<p>{JSON.stringify(this.props.profile)}</p>*/}
+        {this.props.profile.username && this.props.profile.role === "ADMIN" && (
+          <h1 class="jumbotron">Admin Profile</h1>
+        )}
+        {this.props.profile.username && this.props.profile.role === "USER" && (
+          <h1 class="jumbotron">User Profile</h1>
+        )}
+
+        {this.props.profile.username && (
+          <p>
+            User: {this.props.profile.first} , {this.props.profile.last}
+          </p>
+        )}
+
+        {this.props.profile.username && (
+          <p>Username: {this.props.profile.username}</p>
+        )}
+
         <button
           onClick={() => this.props.history.push("./update-profile")}
           className="btn app-primary-button app-margin-block col-5"
         >
           Update Profile Information
         </button>
-        <button
-          onClick={() => this.props.history.push("./manage-users")}
-          className="btn app-primary-button app-margin-block col-5"
-        >
-          Manage Users
-        </button>
-        <button
-          onClick={() => this.props.history.push("./delete-user")}
-          className="btn app-primary-button app-margin-block col-5"
-        >
-          Delete User
-        </button>
+
+        {this.props.profile.role === "ADMIN" && (
+          <button
+            onClick={() => this.props.history.push("./manage-users")}
+            className="btn app-primary-button app-margin-block col-5"
+          >
+            Manage Users
+          </button>
+        )}
+
+        {this.props.profile.role === "ADMIN" && (
+          <button
+            onClick={() => this.props.history.push("./delete-user")}
+            className="btn app-primary-button app-margin-block col-5"
+          >
+            Delete User
+          </button>
+        )}
+
         <button
           onClick={() => this.props.history.push("./subscribe-to-others")}
           className="btn app-primary-button app-margin-block col-5"
         >
           Subscribe to Other Users
         </button>
+
         <button
           onClick={() => this.props.history.push("./liked-recipes")}
           className="btn app-primary-button app-margin-block col-5"
@@ -54,8 +73,15 @@ class Profile extends React.Component {
         >
           Home
         </button>
-        <p>{this.props.profile.subscribeToOthers}</p>
-        <p>{this.props.profile.subscriptionsFromOthers}</p>
+
+        {this.props.profile.username && (
+          <div>
+            <p className="jumbotron"> Cooks I Follow! </p>
+            <p>{this.props.profile.subscribeToOthers}</p>
+            <p className="jumbotron"> Cooks That Follow Me! </p>
+            <p>{this.props.profile.subscriptionsFromOthers}</p>
+          </div>
+        )}
       </div>
     );
   }

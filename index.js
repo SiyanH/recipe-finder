@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 // IMPORT MODELS
-require("./models/Product");
 
 const app = express();
 
@@ -24,7 +23,6 @@ app.use(
 );
 
 //IMPORT ROUTES
-require("./routes/productRoutes")(app);
 require("./controllers/users.controller.server")(app);
 require("./controllers/recipes.controller.server")(app);
 
