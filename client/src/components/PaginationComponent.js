@@ -12,9 +12,32 @@ class PaginationComponent extends Component {
         }
     }
 
-    getPageIndex = () => {
-        let currPage = this.props.currentPage;
-        let pageIndex = this.props.currentPage % 4;
+    calPageIndex = (currPage, pageIndex, maxPage) => {
+        // Last few pages
+        if (maxPage - currPage === 2 && pageIndex === 1) {
+            return [currPage, currPage + 1, currPage + 2];
+        }
+        if (maxPage - currPage === 1) {
+            if (pageIndex === 1) {
+                return [currPage, currPage + 1];
+            }
+            if (pageIndex === 2) {
+                return [currPage - 1, currPage, currPage + 1];
+            }
+        }
+        if (maxPage === currPage) {
+            if (pageIndex === 3) {
+                return [currPage - 2, currPage - 1, currPage];
+            }
+            if (pageIndex === 2) {
+                return [currPage - 1, currPage];
+            }
+            if (pageIndex === 1) {
+                return [currPage];
+            }
+        }
+
+        // Normal pages
         let firstPage, secondPage, thirdPage, fourthPage;
         switch (pageIndex) {
             case 1:
@@ -44,14 +67,20 @@ class PaginationComponent extends Component {
             default:
                 throw new Error("Page parse failed");
         }
+        return [firstPage, secondPage, thirdPage, fourthPage]
+    };
+
+    // Page index starts from 1
+    getPageIndex = () => {
+        let currPage = this.props.currentPage;
+        let pageIndex = currPage % 4;
+        let maxPage = this.props.maxPage || 1;
 
         return ({
+            maxPage: maxPage,
             currPage: currPage,
             pageIndex: pageIndex,
-            pages: [firstPage,
-                    secondPage,
-                    thirdPage,
-                    fourthPage]
+            pages: this.calPageIndex(currPage, pageIndex, maxPage)
         });
     };
 
@@ -86,12 +115,23 @@ class PaginationComponent extends Component {
                                     </span>
                                 </li>)
                     }
-                    <li className="page-item">
+                    {
+                        this.state.currPage < this.state.maxPage &&
+                        <li className="page-item">
                         <span className="page-link" aria-label="Next"
                               onClick={() => this.props.setPageNum(this.state.currPage + 1)}>
                             <span aria-hidden="true">&raquo;</span>
                         </span>
-                    </li>
+                        </li>
+                    }
+                    {
+                        this.state.currPage === this.state.maxPage &&
+                        <li className="page-item disabled">
+                            <span className="page-link" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </span>
+                        </li>
+                    }
                 </ul>
             </nav>
         )

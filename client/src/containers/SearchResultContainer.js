@@ -43,7 +43,9 @@ class SearchResultContainer extends Component {
             .then(() => {
                 if (this.props.index !== undefined) {
                     this.props.findRecipeList(this.state.from, this.state.to);
-                    this.props.findRecipe(Number(this.props.index % 10));
+                    if (this.props.index < this.props.recipes.length) {
+                        this.props.findRecipe(Number(this.props.index % 10));
+                    }
                 }
             })
     };
@@ -67,30 +69,35 @@ class SearchResultContainer extends Component {
     };
 
     render() {
-        return (
-            <div className="row">
-                <div className="col-lg-3">
-                    {
-                        this.props.recipes.length > 0 &&
-                        <RecipeListComponent query={this.props.query}
-                                             index={this.props.index}
-                                             recipes={this.props.recipeList}
-                                             pageNum={this.state.pageNum}
-                                             from={this.state.from}
-                                             to={this.state.to}
-                                             setPageNum={this.setPageNum}/>
-                    }
-                    <PaginationComponent currentPage={this.state.pageNum}
-                                         setPageNum={this.setPageNum}/>
+        if (Number(this.props.index) < this.props.recipes.length) {
+
+            return (
+                <div className="row">
+                    <div className="col-lg-3">
+                        {
+                            this.props.recipes.length > 0 &&
+                            <RecipeListComponent query={this.props.query}
+                                                 index={this.props.index}
+                                                 recipes={this.props.recipeList}
+                                                 pageNum={this.state.pageNum}
+                                                 from={this.state.from}
+                                                 to={this.state.to}
+                                                 setPageNum={this.setPageNum}/>
+                        }
+                        <PaginationComponent currentPage={this.state.pageNum}
+                                             setPageNum={this.setPageNum}
+                                             maxPage={Math.ceil(this.props.recipes.length / 10)}/>
+                    </div>
+                    <div className="col-lg-9">
+                        {
+                            this.props.recipe !== undefined &&
+                            <RecipeComponent recipe={this.props.recipe}/>
+                        }
+                    </div>
                 </div>
-                <div className="col-lg-9">
-                    {
-                        this.props.recipe !== undefined &&
-                        <RecipeComponent recipe={this.props.recipe}/>
-                    }
-                </div>
-            </div>
-        )
+            )
+        }
+        return (<div className="text-center">Oops...No recipe found</div>)
     }
 }
 

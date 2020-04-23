@@ -8,7 +8,7 @@ import {
 const initialState = {
     recipes: [],
     recipeList: [],
-    currentRecipeInfo: {}
+    currentRecipeInfo: {recipe: {ingredientLines: []}}
 };
 
 const recipeReducer = (state = initialState, action) => {
