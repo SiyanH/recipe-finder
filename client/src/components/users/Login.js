@@ -1,5 +1,6 @@
 import React from "react";
 import { login } from "../../services/userService";
+import "../../common/style.css";
 
 export default class Login extends React.Component {
   state = {
@@ -24,9 +25,12 @@ export default class Login extends React.Component {
 
   render() {
     return (
+
       <div>
         <h1>Login</h1>
         {/*<p>{JSON.stringify(this.state)}</p>*/}
+      <div className='container mt-4 mb-4'>
+        <h1 className='display-3 app-header-font'>Login</h1>
         {this.state.error && <p>You're password and username doesn't match</p>}
         <input
           value={this.state.user.username}
@@ -35,7 +39,7 @@ export default class Login extends React.Component {
             user.username = e.target.value;
             this.setState({ user });
           }}
-          className={"form-control"}
+          className='form-control app-margin-block col-5'
           placeholder="username"
         />
         <input
@@ -45,14 +49,14 @@ export default class Login extends React.Component {
             user.password = e.target.value;
             this.setState({ user });
           }}
-          className={"form-control"}
-          type={"password"}
+          className='form-control app-margin-block col-5'
+          type='password'
           placeholder="password"
         />
 
         <button
           onClick={() => this.handlelogin(this.state.user)}
-          className={"btn btn-primary btn-block"}
+          className='btn app-primary-button app-margin-block col-5'
         >
           Login
         </button>

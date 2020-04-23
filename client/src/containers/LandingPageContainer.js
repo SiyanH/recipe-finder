@@ -8,12 +8,13 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import NavbarComponent from "../components/NavbarComponent";
 import RecipeFinderComponent from "../components/RecipeFinderComponent";
-import Home from "../components/Home";
 import Register from "../components/users/Register";
 import Login from "../components/users/Login";
 import Profile from "../components/users/Profile";
 import UpdateProfile from "../components/users/UpdateProfile";
+import PrivacyPolicy from "../components/PrivacyPolicy";
 import SubscribeToOthers from "../components/users/SubscribToOthers";
 import ViewUsers from "../components/users/ViewUsers";
 import DeleteUsers from "../components/users/DeleteUsers";
@@ -25,6 +26,7 @@ class LandingPageContainer extends Component {
     return (
       <Provider store={store}>
         <Router>
+          <NavbarComponent />
           <Switch>
             <Redirect exact from="/recipes/:query" to="/recipes/:query/0" />
             <Route
@@ -40,7 +42,6 @@ class LandingPageContainer extends Component {
             />
           </Switch>
 
-          <Route path="/" exact={true} component={Home} />
           <Route path="/register" exact={true} component={Register} />
           <Route path="/profile" exact={true} component={Profile} />
           <Route path="/login" exact={true} component={Login} />
@@ -48,6 +49,11 @@ class LandingPageContainer extends Component {
             path="/update-profile"
             exact={true}
             component={UpdateProfile}
+          />
+          <Route
+            path="/privacy-policy"
+            exact={true}
+            component={PrivacyPolicy}
           />
           <Route
             path="/subscribe-to-others"

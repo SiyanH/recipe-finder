@@ -1,5 +1,6 @@
 import React from "react";
 import { profile, updateSubscribers } from "../../services/userService";
+import "../../common/style.css";
 
 export default class Profile extends React.Component {
   state = {
@@ -31,33 +32,34 @@ export default class Profile extends React.Component {
         <p>User FirstName: {this.state.profile.first}</p>
         <p>User LastName{this.state.profile.last}</p>
         {/*<p>{JSON.stringify(this.state.profile)}</p>*/}
+
         <button
           onClick={() => this.props.history.push("./update-profile")}
-          className={"btn btn-primary btn-block"}
+          className="btn app-primary-button app-margin-block col-5"
         >
           Update Profile Information
         </button>
         <button
           onClick={() => this.props.history.push("./view-all-users")}
-          className={"btn btn-primary btn-block"}
+          className="btn app-primary-button app-margin-block col-5"
         >
           View All Users
         </button>
         <button
           onClick={() => this.props.history.push("./delete-user")}
-          className={"btn btn-primary btn-block"}
+          className="btn app-primary-button app-margin-block col-5"
         >
           Delete User
         </button>
         <button
           onClick={() => this.props.history.push("./subscribe-to-others")}
-          className={"btn btn-primary btn-block"}
+          className="btn app-primary-button app-margin-block col-5"
         >
           Subscribe to Other Users
         </button>
         <button
           onClick={() => this.props.history.push("./")}
-          className={"btn btn-primary btn-block"}
+          className="btn app-primary-button app-margin-block col-5"
         >
           Home
         </button>

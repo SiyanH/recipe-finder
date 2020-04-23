@@ -5,3 +5,43 @@
 .app-no-bullet-list {
     list-style-type: none;
 }
+
+.app-primary-button {
+    background-color: #FF9659;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+}
+.app-margin-block {
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.app-header-font {
+    font-family: SansSerif;
+    color: #1C2A33;
+    font-weight: bolder;
+}
+
+.app-text-font {
+    font-family: SansSerif;
+    color: #1C2A33;
+    font-weight: bold;
+}
+.app-big-font {
+    font-family: SansSerif;
+    color: #1C2A33;
+    font-weight: bolder;
+    font-size: large;
+}
+.app-page-background
+{
+    background: #FFF0E1;
+}
+
+.app-item-center
+{
+    justify-content: center;
+
+}
