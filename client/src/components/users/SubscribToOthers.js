@@ -1,5 +1,8 @@
 import React from "react";
-import { updateSubscribers } from "../../services/userService";
+import {
+  updateSubscribers,
+  updateOtherParty,
+} from "../../services/userService";
 
 export default class SubscribeToOthers extends React.Component {
   state = {
@@ -10,6 +13,9 @@ export default class SubscribeToOthers extends React.Component {
     updateSubscribers(user).then((user) =>
       this.props.history.push("./profile")
     );
+
+  handleOtherParty = (user) =>
+    updateOtherParty(user).then((user) => console.log(user));
 
   render() {
     return (
@@ -28,7 +34,10 @@ export default class SubscribeToOthers extends React.Component {
         />
 
         <button
-          onClick={() => this.handleSubscriber(this.state)}
+          onClick={() =>
+            this.handleSubscriber(this.state) &&
+            this.handleOtherParty(this.state)
+          }
           className={"btn btn-primary btn-block"}
         >
           Confirm Subscription

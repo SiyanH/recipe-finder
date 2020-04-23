@@ -11,6 +11,11 @@ const findUserById = (userId) => {
     _id: userId,
   });
 };
+const findUserByUserName = (userName) => {
+  return userModel.findOne({
+    username: userName,
+  });
+};
 
 const addEdamamRecipeToUser = async (url, userId) => {
   const user = await findUserById(userId);
@@ -49,28 +54,36 @@ const findUserByCredentials = (username, password) => {
 
 const deleteUser = (uid) => userModel.deleteOne({ _id: uid });
 
-//Add subscribers to our user
-const addSubscriberToUser = async (profileUrl, userId) => {
-  const user = await findUserById(userId);
+//Subscribe to others
+const subscribeToOthers = async (profileUrl, userId) => {
+  const user = await findUserByUserName(profileUrl);
+
   console.log({ user });
   return userModel.updateOne(
     {
       _id: userId,
     },
-    { subscribers: user.subscribers.concat(profileUrl) },
+    { subscribeToOthers: user.subscribeToOthers.concat(user._id) },
     { new: true }
   );
 };
 
 //Add a list of profiles the user has subscribed to
-const addSubscription = async (profileUrl, userId) => {
-  const user = await findUserById(userId);
-  console.log({ user });
-  return userModel.update(
+//find another user by Id
+//update that user with the current users id
+const addSubscriptionToOtherParty = async (otherPartyId, currentUserId) => {
+  const otherUser = await findUserByUserName(otherPartyId);
+  console.log({ otherUser });
+  return userModel.updateOne(
     {
-      id: userId,
+      _id: otherUser._id,
     },
-    { subscribed: user.subscribed.concat(profileUrl) }
+    {
+      subscriptionsFromOthers: otherUser.subscriptionsFromOthers.concat(
+        currentUserId
+      ),
+    },
+    { new: true }
   );
 };
 
@@ -85,5 +98,7 @@ module.exports = {
   deleteUser,
   updateUser,
   addCreatedRecipeToUser,
-  addSubscriberToUser,
+  subscribeToOthers,
+  addSubscriptionToOtherParty,
+  findUserByUserName,
 };

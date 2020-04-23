@@ -16,8 +16,8 @@ const userSchema = mongoose.Schema(
       type: String,
       enum: ["READER", "ADMIN", "Publisher"],
     },
-    subscribers: [String],
-    subscribed: [String],
+    subscribeToOthers: [String],
+    subscriptionsFromOthers: [String],
   },
 
   { collection: "users" }

@@ -51,6 +51,8 @@ export default class Profile extends React.Component {
         >
           Home
         </button>
+        <p>{this.state.profile.subscribeToOthers}</p>
+        <p>{this.state.profile.subscriptionsFromOthers}</p>
       </div>
     );
   }

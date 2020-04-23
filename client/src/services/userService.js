@@ -20,7 +20,12 @@ export const addrecipetouser = (recipe) =>
   axios.post("/api/users/edamamrecipes", recipe);
 
 export const updateSubscribers = (user) =>
-  axios.post("/api/users/subscribers", user).then((res) => console.log(res));
+  axios
+    .post("/api/users/subscribetoothers", user)
+    .then((res) => console.log(res));
+
+export const updateOtherParty = (user) =>
+  axios.post("/api/users/otherparty", user);
 
 //implement update user
 // export const updateprofile = (user) =>
