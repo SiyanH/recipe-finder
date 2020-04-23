@@ -20,23 +20,26 @@ export const updateProfile = (user) => axios.put(`/api/users`, user);
 export const addRecipeToUser = (recipe) =>
   axios.post("/api/users/edamamrecipes", recipe);
 
-//handle user subscription
-export const updateSubscribers = (user) =>
+//subscribe to user
+export const subscribe = (user) =>
   axios
-    .post("/api/users/subscribetoothers", user)
-    .then((res) => console.log(res));
-
-export const updateOtherParty = (user) =>
-  axios.post("/api/users/otherparty", user);
+    .post("/api/users/subscribe", user)
+    .then(res => res.data);
 
 //Get all users on the database
-export const getAllUsers = () => axios.get("/api/users");
+export const findAllUsers = () => axios.get("/api/users");
 
 //Delete users on the database
-export const deleteUsers = (user) =>
-  axios.delete(`/api/users/delete/${user}`).then((res) => console.log(res));
+export const deleteUser = (username) =>
+  axios.delete(`/api/users/delete/${username}`).then((res) => console.log(res));
 
 //implement update user
 // export const updateprofile = (user) =>
 //     axios.put('/api/users/profile', user).then(res =>
 //                                                    console.log(res))
+
+export default {
+    subscribe,
+    deleteUser,
+    findAllUsers
+}

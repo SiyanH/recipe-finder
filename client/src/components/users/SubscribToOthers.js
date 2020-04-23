@@ -1,22 +1,19 @@
 import React from "react";
 import {
-  updateSubscribers,
-  updateOtherParty,
+  subscribe,
 } from "../../services/userService";
 import "../../common/style.css";
 
+// COMPONENT NOT IN USE
 export default class SubscribeToOthers extends React.Component {
   state = {
     profileUrlInfo: "",
   };
   //if username is already taken you have to get something else ***
   handleSubscriber = (user) =>
-    updateSubscribers(user).then((user) =>
+    subscribe(user).then((user) =>
       this.props.history.push("./profile")
     );
-
-  handleOtherParty = (user) =>
-    updateOtherParty(user).then((user) => console.log(user));
 
   render() {
     return (
@@ -35,10 +32,7 @@ export default class SubscribeToOthers extends React.Component {
             />
 
             <button
-              onClick={() =>
-                this.handleSubscriber(this.state) &&
-                this.handleOtherParty(this.state)
-              }
+              onClick={() => this.handleSubscriber(this.state)}
               className="btn app-primary-button app-margin-block col-5"
             >
               Confirm Subscription

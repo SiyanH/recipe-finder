@@ -127,34 +127,13 @@ module.exports = (app) => {
     });
   });
 
-  //add subscriber url
-  app.post("/api/users/subscribetoothers", (req, res) => {
-    //variable for recipe
-    //console.log(JSON.stringify(req.body));
-    //username of other
-    const profileUrl = req.body.profileUrlInfo;
-
-    //console.log({ profileUrl });
-
+  //subscribe to other user
+  app.post("/api/users/subscribe", (req, res) => {
+    // Get current user profile
     const profile = req.session["profile"];
-    const userId = profile._id;
     userDao
-      .subscribeToOthers(profileUrl, userId)
-      .then((updatedUser) => res.send(updatedUser));
-  });
-
-  //add id to other user
-  //find user of that id
-  //add the current user id to their list of subscribed
-  app.post("/api/users/otherparty", (req, res) => {
-    console.log(req.body);
-    //Get username of other user
-    const profileUrl = req.body.profileUrlInfo;
-    //Get id of current user
-    const profile = req.session["profile"];
-    const profileId = profile._id;
-    console.log(profileId);
-    userDao.addSubscriptionToOtherParty(profileUrl, profile);
+      .subscribe(req.body, profile._id)
+      .then(updatedUser => res.send(updatedUser));
   });
 
   // delete a user

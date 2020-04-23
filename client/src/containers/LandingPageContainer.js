@@ -16,7 +16,7 @@ import Profile from "../components/users/Profile";
 import UpdateProfile from "../components/users/UpdateProfile";
 import PrivacyPolicy from "../components/PrivacyPolicy";
 import SubscribeToOthers from "../components/users/SubscribToOthers";
-import ManageUsers from "../components/users/ManageUsers";
+import UserListComponent from "../components/users/UserListComponent";
 import DeleteUsers from "../components/users/DeleteUsers";
 import LikedRecipesComponent from "../components/users/LikedRecipesComponent";
 import Home from "../components/Home";
@@ -61,13 +61,7 @@ class LandingPageContainer extends Component {
             exact={true}
             component={UpdateProfile}
           />
-          <Route
-            path="/subscribe-to-others"
-            exact={true}
-            component={SubscribeToOthers}
-          />
-          <Route path="/manage-users" exact={true} component={ManageUsers} />
-          <Route path="/delete-user" exact={true} component={DeleteUsers} />
+          <Route path="/user-list" exact={true} component={UserListComponent} />
           <Route
             path="/liked-recipes"
             exact={true}
