@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import Message from './Message';
 import axios from 'axios';
+import '../common/style.css'
 
 const FileUpload = () => {
     const [file, setFile] = useState('');
@@ -43,7 +44,7 @@ const FileUpload = () => {
         <Fragment>
             {message ? <Message msg={message} /> : null}
             <form onSubmit={onSubmit}>
-                <div className='custom-file mt-4'>
+                <div className= 'app-item-center custom-file mt-4'>
                     <input
                         type='file'
                         className='custom-file-input'
@@ -58,7 +59,7 @@ const FileUpload = () => {
                 <input
                     type='submit'
                     value='Upload'
-                    className='btn btn-primary btn-block mt-4'
+                    className='btn btn-primary btn-block mt-1'
                 />
             </form>
             {/* Uploaded file renders */}
