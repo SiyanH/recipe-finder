@@ -35,6 +35,7 @@ module.exports = (app) => {
   // register user
   app.post("/api/users", (req, res) => {
     const newUser = req.body;
+    console.log(JSON.stringify(req.body));
     userDao.createUser(newUser).then((actualUser) => {
       req.session["profile"] = actualUser;
       actualUser.password = "****";
@@ -116,12 +117,49 @@ module.exports = (app) => {
   //add recipe from api
   app.post("/api/users/edamamrecipes", (req, res) => {
     //variable for recipe
+    console.log(JSON.stringify(req.body));
     const profile = req.session["profile"];
     const { url } = req.body;
     console.log({ url });
     const userId = profile._id;
+    userDao.addEdamamRecipeToUser(url, userId).then((updatedUser) => {
+      res.send(updatedUser);
+    });
+  });
+
+  //add subscriber url
+  app.post("/api/users/subscribetoothers", (req, res) => {
+    //variable for recipe
+    //console.log(JSON.stringify(req.body));
+    //username of other
+    const profileUrl = req.body.profileUrlInfo;
+
+    //console.log({ profileUrl });
+
+    const profile = req.session["profile"];
+    const userId = profile._id;
     userDao
-      .addEdamamRecipeToUser(url, userId)
+      .subscribeToOthers(profileUrl, userId)
       .then((updatedUser) => res.send(updatedUser));
+  });
+
+  //add id to other user
+  //find user of that id
+  //add the current user id to their list of subscribed
+  app.post("/api/users/otherparty", (req, res) => {
+    console.log(req.body);
+    //Get username of other user
+    const profileUrl = req.body.profileUrlInfo;
+    //Get id of current user
+    const profile = req.session["profile"];
+    const profileId = profile._id;
+    console.log(profileId);
+    userDao.addSubscriptionToOtherParty(profileUrl, profile);
+  });
+
+  // delete a user
+  app.delete("/api/users/delete/:user", (req, res) => {
+    const userName = req.params.user;
+    userDao.deleteUserByUserName(userName).then((status) => res.send(status));
   });
 };

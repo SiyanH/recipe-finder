@@ -12,7 +12,14 @@ const userSchema = mongoose.Schema(
       },
     ],
     recipesFromApi: [String],
+    role: {
+      type: String,
+      enum: ["READER", "ADMIN", "Publisher"],
+    },
+    subscribeToOthers: [String],
+    subscriptionsFromOthers: [String],
   },
+
   { collection: "users" }
 );
 

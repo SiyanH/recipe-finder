@@ -1,12 +1,5 @@
 import React from "react";
-import { profile } from "../../services/userService";
-import RecipeFinderComponent from "../../containers/LandingPageContainer";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { profile, updateSubscribers } from "../../services/userService";
 
 export default class Profile extends React.Component {
   state = {
@@ -17,6 +10,7 @@ export default class Profile extends React.Component {
       last: "",
       email: "",
       roles: [],
+      profileInput: "",
     },
   };
 
@@ -27,15 +21,19 @@ export default class Profile extends React.Component {
       })
     );
   }
+  handleSubscribers = (user) =>
+    updateSubscribers(user).then(console.log({ user }));
 
   render() {
+    const urlTest = "hello there";
+    const listItems = this.state.profile.subscribeToOthers;
     return (
       <div>
         <h1>Profile</h1>
+        console.log({urlTest});
         <p>{this.state.profile.first}</p>
         <p>{this.state.profile.last}</p>
         <p>{JSON.stringify(this.state.profile)}</p>
-
         <button
           onClick={() => this.props.history.push("./update-profile")}
           className={"btn btn-primary btn-block"}
@@ -43,11 +41,33 @@ export default class Profile extends React.Component {
           Update Profile Information
         </button>
         <button
+          onClick={() => this.props.history.push("./view-all-users")}
+          className={"btn btn-primary btn-block"}
+        >
+          View All Users
+        </button>
+        <button
+          onClick={() => this.props.history.push("./delete-user")}
+          className={"btn btn-primary btn-block"}
+        >
+          Delete User
+        </button>
+        <button
+          onClick={() => this.props.history.push("./subscribe-to-others")}
+          className={"btn btn-primary btn-block"}
+        >
+          Subscribe to Other Users
+        </button>
+        <button
           onClick={() => this.props.history.push("./")}
           className={"btn btn-primary btn-block"}
         >
           Home
         </button>
+        <h5>Cooks I follow!</h5>
+        <p>{listItems}</p>
+        <h5>Cooks that follow me!</h5>
+        <p>{this.state.profile.subscriptionsFromOthers}</p>
       </div>
     );
   }

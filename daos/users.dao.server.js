@@ -11,15 +11,22 @@ const findUserById = (userId) => {
     _id: userId,
   });
 };
+const findUserByUserName = (userName) => {
+  return userModel.findOne({
+    username: userName,
+  });
+};
 
 const addEdamamRecipeToUser = async (url, userId) => {
   const user = await findUserById(userId);
   console.log({ user });
-  return userModel.update(
+  //query to find it, updated data, return the actual data
+  return userModel.updateOne(
     {
       _id: userId,
     },
-    { recipesFromApi: user.recipesFromApi.concat(url) }
+    { recipesFromApi: user.recipesFromApi.concat(url) },
+    { new: true }
   );
 };
 
@@ -47,6 +54,43 @@ const findUserByCredentials = (username, password) => {
 
 const deleteUser = (uid) => userModel.deleteOne({ _id: uid });
 
+const deleteUserByUserName = (userName) =>
+  userModel.deleteOne({ username: userName });
+
+//Subscribe to others
+const subscribeToOthers = async (profileUrl, userId) => {
+  const user = await findUserByUserName(profileUrl);
+
+  console.log({ user });
+  return userModel.updateOne(
+    {
+      _id: userId,
+    },
+    { subscribeToOthers: user.subscribeToOthers.concat(user.username) },
+    { new: true }
+  );
+};
+
+//Add a list of profiles the user has subscribed to
+//find another user by Id
+//update that user with the current users id
+const addSubscriptionToOtherParty = async (otherPartyId, currentUser) => {
+  const otherUser = await findUserByUserName(otherPartyId);
+  console.log({ otherUser });
+  console.log({ currentUser });
+  return userModel.updateOne(
+    {
+      _id: otherUser._id,
+    },
+    {
+      subscriptionsFromOthers: otherUser.subscriptionsFromOthers.concat(
+        currentUser.username
+      ),
+    },
+    { new: true }
+  );
+};
+
 // TODO: Find all recipes for user
 
 module.exports = {
@@ -58,4 +102,8 @@ module.exports = {
   deleteUser,
   updateUser,
   addCreatedRecipeToUser,
+  subscribeToOthers,
+  addSubscriptionToOtherParty,
+  findUserByUserName,
+  deleteUserByUserName,
 };
