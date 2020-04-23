@@ -48,6 +48,7 @@ class LandingPageContainer extends Component {
               )}
             />
           </Switch>
+
           <Route path="/" exact={true} component={Home} />
           <Route
             path="/privacy-policy"
@@ -57,6 +58,7 @@ class LandingPageContainer extends Component {
 
           <Route path="/register" exact={true} component={Register} />
           <Route path="/profile" exact={true} component={Profile} />
+
           <Route path="/login" exact={true} component={Login} />
           <Route
             path="/update-profile"
@@ -70,6 +72,7 @@ class LandingPageContainer extends Component {
           />
           <Route path="/manage-users" exact={true} component={ManageUsers} />
           <Route path="/delete-user" exact={true} component={DeleteUsers} />
+
           <Route
             path="/liked-recipes"
             exact={true}

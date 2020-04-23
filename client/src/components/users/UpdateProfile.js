@@ -48,7 +48,6 @@ export default class UpdateProfile extends React.Component {
             })
           }
           className="form-control app-margin-block col-5"
-          type={"password"}
           placeholder="first name"
         />
         <input
@@ -59,7 +58,6 @@ export default class UpdateProfile extends React.Component {
             })
           }
           className="form-control app-margin-block col-5"
-          type={"password"}
           placeholder="last name"
         />
         <button
