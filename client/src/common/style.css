@@ -27,8 +27,14 @@
 .app-text-font {
     font-family: SansSerif;
     color: #1C2A33;
+    font-weight: bold;
 }
-
+.app-big-font {
+    font-family: SansSerif;
+    color: #1C2A33;
+    font-weight: bolder;
+    font-size: large;
+}
 .app-page-background
 {
     background: #FFF0E1;

@@ -41,10 +41,10 @@ const FileUpload = () => {
     };
 
     return (
-        <Fragment>
+        <div>
             {message ? <Message msg={message} /> : null}
             <form onSubmit={onSubmit}>
-                <div className= 'app-item-center custom-file mt-4'>
+                <div className= 'app-item-center custom-file'>
                     <input
                         type='file'
                         className='custom-file-input'
@@ -71,7 +71,7 @@ const FileUpload = () => {
                     </div>
                 </div>
             ) : null}
-        </Fragment>
+        </div>
     );
 };
 
