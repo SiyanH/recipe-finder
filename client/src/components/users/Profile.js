@@ -11,8 +11,8 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Profile</h1>
+        <div className="container mt-4 mb-4">
+        <h1 className="display-6 app-header-font">Profile</h1>
         <p>
           User: {this.props.profile.first} , {this.props.profile.last}
         </p>

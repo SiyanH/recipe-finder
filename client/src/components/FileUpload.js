@@ -44,10 +44,10 @@ const FileUpload = () => {
         <div>
             {message ? <Message msg={message} /> : null}
             <form onSubmit={onSubmit}>
-                <div className= 'app-item-center custom-file'>
+                <div className= 'app-item-center custom-file col-6'>
                     <input
                         type='file'
-                        className='custom-file-input'
+                        className='custom-file-input form-control app-margin-block col-6'
                         id='customFile'
                         onChange={onChange}
                     />
@@ -59,12 +59,12 @@ const FileUpload = () => {
                 <input
                     type='submit'
                     value='Upload'
-                    className='btn btn-primary btn-block mt-1'
+                    className='btn btn-primary btn-block app-margin-block app-primary-button col-6'
                 />
             </form>
             {/* Uploaded file renders */}
             {uploadedFile ? (
-                <div className='row mt-5'>
+                <div className='row mt-5 justify-content-center'>
                     <div className='col-md-6 m-auto'>
                         <h3 className='text-center'>{uploadedFile.fileName}</h3>
                         <img style={{ width: '100%' }} src={uploadedFile.filePath} alt='' />

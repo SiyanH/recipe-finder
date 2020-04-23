@@ -4,7 +4,7 @@ import "./NavbarComponent.css";
 
 const NavbarComponent = () => {
   return (
-    <nav className="navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar-expand-sm navbar-light bg-light">
       <div className="navbar-collapse">
         <i id="cookie-icon" className="fas fa-cookie-bite"></i>
         <Link to="/" className="navbar-brand fas">
