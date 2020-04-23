@@ -108,24 +108,24 @@ module.exports = (app) => {
     });
   });
 
-  // // get user by user id I DONT KNOW WHY BUT GET USER BY ID ENDS THE SESSION
+  // // get user by user
   app.get("/api/users/:userId", (req, res) => {
     const userId = req.params.userId;
     userDao.findUserById(userId).then((userFound) => res.send(userFound));
   });
 
-  //add recipe from api
-  app.post("/api/users/edamamrecipes", (req, res) => {
-    //variable for recipe
-    console.log(JSON.stringify(req.body));
-    const profile = req.session["profile"];
-    const { url } = req.body;
-    console.log({ url });
-    const userId = profile._id;
-    userDao.addEdamamRecipeToUser(url, userId).then((updatedUser) => {
-      res.send(updatedUser);
-    });
-  });
+  // //add recipe from api
+  // app.post("/api/users/edamamrecipes", (req, res) => {
+  //   //variable for recipe
+  //   console.log(JSON.stringify(req.body));
+  //   const profile = req.session["profile"];
+  //   const { url } = req.body;
+  //   console.log({ url });
+  //   const userId = profile._id;
+  //   userDao.addEdamamRecipeToUser(url, userId).then((updatedUser) => {
+  //     res.send(updatedUser);
+  //   });
+  // });
 
   //subscribe to other user
   app.post("/api/users/subscribe", (req, res) => {
@@ -133,7 +133,7 @@ module.exports = (app) => {
     const profile = req.session["profile"];
     userDao
       .subscribe(req.body, profile._id)
-      .then(updatedUser => res.send(updatedUser));
+      .then((updatedUser) => res.send(updatedUser));
   });
 
   // delete a user
