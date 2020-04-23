@@ -106,9 +106,9 @@ class SearchResultContainer extends Component {
 
 const stateToPropertyMapper = (state) => {
     return {
-        recipes: state.recipes,
-        recipe: state.currentRecipeInfo.recipe,
-        recipeList: state.recipeList
+        recipes: state.recipe.recipes,
+        recipe: state.recipe.currentRecipeInfo.recipe,
+        recipeList: state.recipe.recipeList
     }
 };
 
