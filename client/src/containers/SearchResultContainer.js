@@ -70,7 +70,6 @@ class SearchResultContainer extends Component {
 
     render() {
         if (Number(this.props.index) < this.props.recipes.length) {
-
             return (
                 <div className="row">
                     <div className="col-lg-3">
@@ -86,7 +85,8 @@ class SearchResultContainer extends Component {
                         }
                         <PaginationComponent currentPage={this.state.pageNum}
                                              setPageNum={this.setPageNum}
-                                             maxPage={Math.ceil(this.props.recipes.length / 10)}/>
+                                             maxPage={Math.ceil(
+                                                 this.props.recipes.length / 10)}/>
                     </div>
                     <div className="col-lg-9">
                         {
@@ -97,7 +97,10 @@ class SearchResultContainer extends Component {
                 </div>
             )
         }
-        return (<div className="text-center">Oops...No recipe found</div>)
+        if (this.props.recipes.length === 0) {
+            return (<div className="text-center">Something amazing is on the way...</div>)
+        }
+        return (<div className="text-center">Oops...Nothing found :(</div>)
     }
 }
 
