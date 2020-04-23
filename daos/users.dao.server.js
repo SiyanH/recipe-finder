@@ -54,6 +54,9 @@ const findUserByCredentials = (username, password) => {
 
 const deleteUser = (uid) => userModel.deleteOne({ _id: uid });
 
+const deleteUserByUserName = (userName) =>
+  userModel.deleteOne({ username: userName });
+
 //Subscribe to others
 const subscribeToOthers = async (profileUrl, userId) => {
   const user = await findUserByUserName(profileUrl);
@@ -101,4 +104,5 @@ module.exports = {
   subscribeToOthers,
   addSubscriptionToOtherParty,
   findUserByUserName,
+  deleteUserByUserName,
 };
