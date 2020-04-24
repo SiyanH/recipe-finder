@@ -16,8 +16,8 @@ export default class UserCreatedRecipe extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Create your own recipe!</h1>
+    <div className="container mt-4 mb-4">
+        <h1 className="display-6 app-header-font">Create your own recipe!</h1>
         <input
           value={this.state.label}
           onChange={(e) =>
@@ -25,7 +25,7 @@ export default class UserCreatedRecipe extends React.Component {
               label: e.target.value,
             })
           }
-          className={"form-control"}
+          className="form-control app-margin-block col-5"
           placeholder="Name your recipe"
         />
         <input
@@ -35,7 +35,7 @@ export default class UserCreatedRecipe extends React.Component {
               userProvidedIngredients: e.target.value,
             })
           }
-          className={"form-control"}
+          className="form-control app-margin-block col-5"
           placeholder="Ingredients"
         />
         <input
@@ -45,19 +45,19 @@ export default class UserCreatedRecipe extends React.Component {
               userProvidedInstructions: e.target.value,
             })
           }
-          className={"form-control"}
+          className="form-control app-margin-block col-5"
           placeholder="Instructions"
         />
         <button
           onClick={() => this.handleCreateRecipe(this.state)}
-          className={"btn btn-primary btn-block"}
+          className="btn app-primary-button app-margin-block col-5"
         >
           Create Recipe!
         </button>
 
         <button
           onClick={() => this.props.history.push("./")}
-          className={"btn btn-primary btn-block"}
+          className="btn app-primary-button app-margin-block col-5"
         >
           Home
         </button>
