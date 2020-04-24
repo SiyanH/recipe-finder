@@ -62,13 +62,13 @@ export default class UpdateProfile extends React.Component {
         />
         <button
           onClick={() => this.handleupdate(this.state)}
-          className="btn app-primary-button app-margin-block col-5"
+          className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
         >
           Update Profile Information
         </button>
         <button
           onClick={() => this.props.history.push("./")}
-          className="btn app-primary-button app-margin-block col-5"
+          className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
         >
           Home
         </button>

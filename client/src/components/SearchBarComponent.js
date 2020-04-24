@@ -29,7 +29,7 @@ class SearchBarComponent extends Component {
                        onKeyPress={e => this.submitQuery(e.key)}/>
                 <div className="input-group-append">
                     <Link to={`/recipes/${this.state.query}/0`}
-                          className="btn btn-outline-secondary app-secondary-button" role="button">
+                          className="btn btn-primary app-secondary-button" role="button">
                         <i className="fas fa-search"></i>
                     </Link>
                 </div>

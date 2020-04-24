@@ -57,7 +57,7 @@ const FileUpload = () => {
       setLabels(labelsWithRecipe);
 
       setMessage(
-        "File Uploaded (if file is uploaded and Google AI doesn't render please logout and refresh and log in.)"
+        "File Uploaded (If file is uploaded and Google AI doesn't render, please logout, refresh and log in.)"
       );
     } catch (err) {
       if (err.response.status === 500) {
@@ -69,10 +69,10 @@ const FileUpload = () => {
   };
 
   return (
-    <div>
+    <div className='justify-content-center'>
       {message ? <Message msg={message} /> : null}
       <form onSubmit={onSubmit}>
-        <div className="app-item-center custom-file ">
+        <div className="custom-file ">
           <input
             type="file"
             className="custom-file-input form-control app-margin-block "
@@ -91,20 +91,25 @@ const FileUpload = () => {
         />
       </form>
       {/* Uploaded file renders make title look better (if possible align */}
-
       {uploadedFile ? (
         <div className="row mt-5 justify-content-center">
+
           <div className="col-md-6 m-auto">
-            <p className="text-center">{uploadedFile.fileName}</p>
+            <p className="text-center app-text-small app-text-font">{uploadedFile.fileName} </p>
+            <p className="text-center app-text-small app-text-bold">If an upload is successful,
+              a list of recipe matches will appear. Please copy and paste into the text search bar below the
+              recipe that closest matches what you were searching for. </p>
             <img style={{ width: "100%" }} src={uploadedFile.filePath} alt="" />
+
           </div>
+
         </div>
       ) : null}
-      {labels.map(
+      { labels.map(
         (label) =>
           label.description && (
             <div>
-              <ul className="list-group ">
+              <ul className="list-group app-text-small">
                 <li className="list-group-item">
                   Guess: {label.description} Score: {label.score}
                   {label.recipe && (
@@ -115,11 +120,17 @@ const FileUpload = () => {
                   )}
                 </li>
               </ul>
+
             </div>
           )
+
       )}
+
+      <br/>
     </div>
+
   );
+
 };
 
 export default FileUpload;
