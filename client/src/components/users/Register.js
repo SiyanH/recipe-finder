@@ -72,17 +72,6 @@ export default class Register extends React.Component {
           className="form-control app-margin-block col-5"
           placeholder="last name"
         />
-        {/*<input*/}
-        {/*value={this.state.role}*/}
-        {/*onChange={(e) =>*/}
-        {/*this.setState({*/}
-        {/*role: e.target.value,*/}
-        {/*})*/}
-        {/*}*/}
-        {/*className={"form-control"}*/}
-        {/*placeholder="last name"*/}
-        {/*/>*/}
-
         <input
           type="radio"
           name="role"

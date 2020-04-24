@@ -12,6 +12,8 @@ class Profile extends React.Component {
   render() {
     return (
         <div className="container mt-4 mb-4">
+
+            {/* PROFILE HEADER WITH USER's FIRST AND LAST NAME*/}
             {this.props.profile.username && this.props.profile.role === "ADMIN"
             && (
             <div className="card">
@@ -32,15 +34,14 @@ class Profile extends React.Component {
             && (
                 <div className="card">
                     <div className="card-header">
-                        <h1 className="display-5 text-center app-header-font">
-                            Chef {this.props.profile.first} {this.props.profile.last}'s
-                            Profile
-                        </h1>
-                        <h6 className="card-subtitle mb-2 app-text-font text-muted">
-                            Username: {this.props.profile.username} </h6>
-                        <h6 className="card-subtitle mb-2 app-text-font text-muted">
-                            Role: User</h6>
+                        Chef {this.props.profile.first} {this.props.profile.last}'s
+                        Profile
                     </div>
+                    <div className='card-body'>
+                            Username: {this.props.profile.username}
+                            Role: User
+                    </div>
+
                 </div>
             )}
 
@@ -91,20 +92,31 @@ class Profile extends React.Component {
               Home
             </button>
             {this.props.profile.username && (
-                <div>
-                    <p className="jumbotron"> Cooks I Follow! </p>
-                    <ul className="list-group">
-                        {this.props.profile.subscribedUsers.map((subscribedUser) => (
-                            <li className="list-group-item">{subscribedUser}</li>
-                        ))}
-                    </ul>
-                    <p className="jumbotron"> Cooks That Follow Me! </p>
-
-                    <ul className="list-group">
-                        {this.props.profile.followers.map((follower) => (
-                            <li className="list-group-item">{follower}</li>
-                        ))}
-                    </ul>
+                <div className= 'mt-4'>
+                    <div className="card">
+                        <div className="card-header">
+                            <h1 className="display-6 text-center app-header-font">
+                                Following
+                            </h1>
+                            <ul className="list-group">
+                                {this.props.profile.subscribedUsers.map((subscribedUser) => (
+                                    <li className="list-group-item">{subscribedUser}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="card mt-4">
+                        <div className="card-header">
+                            <h1 className="display-6 text-center app-header-font">
+                                Followers
+                            </h1>
+                            <ul className="list-group">
+                                {this.props.profile.followers.map((follower) => (
+                                    <li className="list-group-item">{follower}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
