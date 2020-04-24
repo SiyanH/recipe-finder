@@ -17,10 +17,8 @@ module.exports = (app) => {
     //add recipe from api
     app.post("/api/users/edamamrecipes", (req, res) => {
         //variable for recipe
-        // console.log(JSON.stringify(req.body));
         const profile = req.session["profile"];
         const {url} = req.body;
-        // console.log({url});
         const userId = profile._id;
         userDao.addEdamamRecipeToUser(url, userId).then(updatedUser => {
             req.session["profile"] = updatedUser;
@@ -47,11 +45,16 @@ module.exports = (app) => {
     );
 
     app.get("/api/users/:uid/recipes", (req, res) =>
-        recipeDao.findUserCreatedRecipes(req.params.uid)
-            .then(recipes => res.send(recipes))
+        recipeDao
+            .findUserCreatedRecipes(req.params.uid)
+            .then((recipes) => res.send(recipes))
     );
 
     app.delete("/api/recipes/:rid", (req, res) => {
         recipeDao.deleteRecipe(req.params.rid).then((status) => res.send(status));
+    });
+
+    app.get("/api/recipes", (req, res) => {
+        recipeDao.findAllRecipes().then((status) => res.send(status));
     });
 };

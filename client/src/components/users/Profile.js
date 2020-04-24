@@ -2,7 +2,6 @@ import React from "react";
 import {profile, findFollowers} from "../../services/userService";
 import {findProfile} from "../../actions/userActions";
 import {connect} from "react-redux";
-import "../../common/style.css";
 import {Link} from "react-router-dom";
 
 class Profile extends React.Component {
@@ -12,34 +11,54 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.findProfile()
-            .then(() => {console.log(this.props.profile);return findFollowers(this.props.profile._id)})
+            .then(() => {
+                console.log(this.props.profile);
+                return findFollowers(this.props.profile._id)
+            })
             .then(followers => this.setState({followers: followers}));
     }
 
     render() {
         return (
             <div className="container mt-4 mb-4">
-                {this.props.profile.username && this.props.profile.role === "ADMIN" && (
-                    <h1 className="jumbotron">Admin Profile</h1>
-                )}
-                {this.props.profile.username && this.props.profile.role === "USER" && (
-                    <h1 className="jumbotron">User Profile</h1>
-                )}
+                {this.props.profile.username && this.props.profile.role === "ADMIN"
+                 && (
+                     <div className="card">
+                         <div className="card-header">
+                             <h1 className="display-5 text-center app-header-font">
+                                 Chef {this.props.profile.first} {this.props.profile.last}'s
+                                 Profile
+                             </h1>
+                             <h6 className="card-subtitle mb-2 app-text-font text-muted">
+                                 Username: {this.props.profile.username} </h6>
+                             <h6 className="card-subtitle mb-2 app-text-font text-muted">
+                                 Role: Administrator</h6>
+                         </div>
+                     </div>
+                 )}
 
-                {this.props.profile.username && (
-                    <p>
-                        User: {this.props.profile.first} , {this.props.profile.last}
-                    </p>
-                )}
+                {this.props.profile.username && this.props.profile.role === "USER"
+                 && (
+                     <div className="card">
+                         <div className="card-header">
+                             <h1 className="display-5 text-center app-header-font">
+                                 Chef {this.props.profile.first} {this.props.profile.last}'s
+                                 Profile
+                             </h1>
+                             <h6 className="card-subtitle mb-2 app-text-font text-muted">
+                                 Username: {this.props.profile.username} </h6>
+                             <h6 className="card-subtitle mb-2 app-text-font text-muted">
+                                 Role: User</h6>
+                         </div>
+                     </div>
+                 )}
 
-                {this.props.profile.username && (
-                    <p>Username: {this.props.profile.username}</p>
-                )}
-
+                {/* PROFILE BUTTONS*/}
                 {this.props.profile.username && (
                     <button
                         onClick={() => this.props.history.push("./update-profile")}
-                        className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
+                        className="btn btn-primary btn-block app-margin-block
+                app-primary-button"
                     >
                         Update Profile Information
                     </button>
@@ -47,7 +66,8 @@ class Profile extends React.Component {
 
                 <button
                     onClick={() => this.props.history.push("./user-list")}
-                    className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
+                    className="btn btn-primary btn-block app-margin-block
+              app-primary-button"
                 >
                     User List
                 </button>
@@ -55,7 +75,8 @@ class Profile extends React.Component {
                 {this.props.profile.username && (
                     <button
                         onClick={() => this.props.history.push("./liked-recipes")}
-                        className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
+                        className="btn btn-primary btn-block app-margin-block
+                app-primary-button"
                     >
                         View Liked Recipes
                     </button>
@@ -64,7 +85,8 @@ class Profile extends React.Component {
                 {this.props.profile.username && (
                     <button
                         onClick={() => this.props.history.push("./create-recipe")}
-                        className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
+                        className="btn btn-primary btn-block app-margin-block
+                app-primary-button"
                     >
                         Create Your Own Recipe!
                     </button>
@@ -72,7 +94,8 @@ class Profile extends React.Component {
 
                 <button
                     onClick={() => this.props.history.push("./")}
-                    className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
+                    className="btn btn-primary btn-block app-margin-block
+              app-primary-button"
                 >
                     Home
                 </button>

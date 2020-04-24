@@ -70,13 +70,8 @@ li .app-navbar-link:hover:not(.active)
     white-space: nowrap;
 }
 
-#privacy-policy
-{
-    margin-right: auto
-}
-
-
 #cookie-icon
 {
     color: #FF9659;
+    margin-left: 10px;
 }

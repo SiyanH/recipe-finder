@@ -24,8 +24,9 @@
     display: block;
 }
 .app-margin-block {
-    margin-top:5px;
+    margin-top: 0.5rem;
 }
+
 .app-header-font {
     font-family: SansSerif;
     color: #1C2A33;
@@ -39,6 +40,10 @@
     font-family: SansSerif;
     color: #1C2A33;
     font-size: small;
+}
+
+.app-card-width {
+    width: 18rem;
 }
 
 .app-text-font {
