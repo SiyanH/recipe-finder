@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+
 const userSchema = mongoose.Schema(
     {
-        username: String,
+        username: {type: String, unique: true},
         password: String,
         first: String,
         last: String,
@@ -12,7 +13,9 @@ const userSchema = mongoose.Schema(
                 ref: "RecipeModel"
             },
         ],
-        recipesFromApi: [String],
+        recipesFromApi: [{
+            type: String
+        }],
         role: {
             type: String,
             enum: ["USER", "ADMIN"],
@@ -25,9 +28,7 @@ const userSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "UserModel"
         }]
-    },
-
-    {collection: "users"}
+    }, {collection: "users"}
 );
 
 module.exports = userSchema;

@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+
 const portfolioSchema = mongoose.Schema({
                                             name: String,
                                             tags: [String],
@@ -14,6 +15,6 @@ const portfolioSchema = mongoose.Schema({
                                                 type: mongoose.Schema.Types.ObjectId,
                                                 ref: 'RecipeModel'
                                             },
-                                        }, {collection: 'portfolios'})
+                                        }, {collection: 'portfolios'});
 
-module.exports = portfolioSchema
+module.exports = portfolioSchema;

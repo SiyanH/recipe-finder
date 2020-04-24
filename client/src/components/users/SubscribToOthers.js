@@ -1,6 +1,5 @@
 import React from "react";
 import { subscribe } from "../../services/userService";
-import "../../common/style.css";
 
 // COMPONENT NOT IN USE
 export default class SubscribeToOthers extends React.Component {
