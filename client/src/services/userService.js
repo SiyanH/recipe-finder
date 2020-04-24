@@ -4,13 +4,12 @@ import axios from "axios";
 export const register = (user) =>
   axios
     .post("/api/users", user)
-    .then((res) => console.log(res))
     .catch((err) => {
       console.log("services:error");
     });
 
 //open user profile
-export const profile = async () => axios.get("/api/users/profile");
+export const profile = () => axios.get("/api/users/profile");
 
 //implement login
 export const login = (user) => axios.post("/api/login", user);
@@ -42,6 +41,9 @@ export const findAllUsers = () => axios.get("/api/users");
 
 export const findUserByUsername = (username) =>
   axios.get(`/api/users/username/${username}`).then((res) => res.data);
+
+export const findFollowers = (userId) =>
+    axios.get(`/api/users/${userId}/followers`).then(res => res.data);
 
 //implement update user
 // export const updateprofile = (user) =>
