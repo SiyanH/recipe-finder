@@ -45,28 +45,28 @@ class UserListComponent extends React.Component {
                                     <th scope="row">{user.username}</th>
                                     <td>{user.first}</td>
                                     <td>{user.last}</td>
-                                    <td>
+                                    <td className="row d-flex justify-content-center">
                                         {
                                             this.props.userRole !== undefined &&
                                             <div>
                                                 {
                                                     this.props.userRole === 'ADMIN' &&
                                                     <button
-                                                        className="btn btn-primary btn-sm mr-3 mb-1 mb-sm-0"
+                                                        className="btn btn-primary btn-sm mr-2 mb-1 mb-md-0"
                                                         onClick={() =>
                                                             this.deleteUser(user.username)}>Delete
                                                     </button>
                                                 }
                                                 <button
-                                                    className="btn btn-primary btn-sm mb-1 mb-sm-0"
+                                                    className="btn btn-primary btn-sm mr-2 mb-1 mb-md-0"
                                                     onClick={() => this.subscribe(user)}>Subscribe
                                                 </button>
                                             </div>
                                         }
-                                        <Link to={`/profile/${user.username}`}
-                                              className="btn btn-primary btn-sm mb-1 mb-sm-0">
-                                            Profile
-                                        </Link>
+                                            <Link to={`/profile/${user.username}`}
+                                                  className="btn btn-primary btn-sm">
+                                                Profile
+                                            </Link>
                                     </td>
                                 </tr>))
                         }
