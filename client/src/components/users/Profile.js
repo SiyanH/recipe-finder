@@ -71,7 +71,6 @@ class Profile extends React.Component {
               ))}
             </ul>
             <p className="jumbotron"> Cooks That Follow Me! </p>
-            <p>{this.props.profile.followers}</p>
             <ul className="list-group">
               {this.props.profile.followers.map((follower) => (
                 <li className="list-group-item">{follower}</li>
