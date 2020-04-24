@@ -1,6 +1,7 @@
 import React from "react";
 import userService from "../../services/userService";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 class UserListComponent extends React.Component {
     state = {users: []};
@@ -34,10 +35,7 @@ class UserListComponent extends React.Component {
                             <th scope="col">Username</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
-                            {
-                                this.props.userRole !== undefined &&
-                                <th scope="col">Action</th>
-                            }
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,22 +45,29 @@ class UserListComponent extends React.Component {
                                     <th scope="row">{user.username}</th>
                                     <td>{user.first}</td>
                                     <td>{user.last}</td>
-                                    {
-                                        this.props.userRole !== undefined &&
-                                        <td>
-                                            {
-                                                this.props.userRole === 'ADMIN' &&
+                                    <td>
+                                        {
+                                            this.props.userRole !== undefined &&
+                                            <div>
+                                                {
+                                                    this.props.userRole === 'ADMIN' &&
+                                                    <button
+                                                        className="btn btn-primary btn-sm mr-3 mb-1 mb-sm-0"
+                                                        onClick={() =>
+                                                            this.deleteUser(user.username)}>Delete
+                                                    </button>
+                                                }
                                                 <button
-                                                    className="btn btn-primary btn-sm mr-3 mb-1 mb-sm-0"
-                                                    onClick={() =>
-                                                        this.deleteUser(user.username)}>Delete
-                                                </button>
-                                            }
-                                            <button className="btn btn-primary btn-sm mb-1 mb-sm-0"
+                                                    className="btn btn-primary btn-sm mb-1 mb-sm-0"
                                                     onClick={() => this.subscribe(user)}>Subscribe
-                                            </button>
-                                        </td>
-                                    }
+                                                </button>
+                                            </div>
+                                        }
+                                        <Link to={`/profile/${user.username}`}
+                                              className="btn btn-primary btn-sm mb-1 mb-sm-0">
+                                            Profile
+                                        </Link>
+                                    </td>
                                 </tr>))
                         }
                         </tbody>

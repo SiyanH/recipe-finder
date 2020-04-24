@@ -15,15 +15,14 @@ import Login from "../components/users/Login";
 import Profile from "../components/users/Profile";
 import UpdateProfile from "../components/users/UpdateProfile";
 import PrivacyPolicy from "../components/PrivacyPolicy";
-import SubscribeToOthers from "../components/users/SubscribToOthers";
 import UserListComponent from "../components/users/UserListComponent";
-import DeleteUsers from "../components/users/DeleteUsers";
 import LikedRecipesComponent from "../components/users/LikedRecipesComponent";
 import UserCreatedRecipe from "../components/users/UserCreatedRecipe";
 
 import Home from "../components/Home";
 
 import userReducer from "../reducers/userReducer";
+import PublicProfile from "../components/users/PublicProfile";
 
 const reducer = combineReducers({ user: userReducer, recipe: recipeReducer });
 const store = createStore(reducer);
@@ -76,6 +75,11 @@ class LandingPageContainer extends Component {
             path="/create-recipe"
             exact={true}
             component={UserCreatedRecipe}
+          />
+          <Route
+              path="/profile/:username"
+              exact={true}
+              render={(props) => <PublicProfile username={props.match.params.username}/>}
           />
         </Router>
       </Provider>
