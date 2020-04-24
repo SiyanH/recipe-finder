@@ -41,13 +41,12 @@ const addEdamamRecipeToUser = async (url, userId) => {
 
 //add user created recipe to the user
 const addCreatedRecipeToUser = async (recipe, userId) => {
-    return userModel.update(
-        {
-            _id: userId,
-        },
-        {$push: {recipes: recipe}}
-    );
-
+  return userModel.update(
+    {
+      _id: userId,
+    },
+    { $push: { recipes: recipe } }
+  );
 };
 
 const updateUser = (userId, newUser) => {

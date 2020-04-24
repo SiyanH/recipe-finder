@@ -33,7 +33,7 @@ export const subscribe = (user) =>
 
 //Delete users on the database
 export const deleteUser = (username) =>
-    axios.delete(`/api/users/delete/${username}`).then((res) => console.log(res));
+    axios.delete(`/api/users/delete/${username}`).then((res) => res.ok);
 
 //add usercreated recipe
 export const createRecipe = (recipe) =>
@@ -41,6 +41,9 @@ export const createRecipe = (recipe) =>
 
 //Get all users on the database
 export const findAllUsers = () => axios.get("/api/users");
+
+export const findUserByUsername = (username) =>
+    axios.get(`/api/users/username/${username}`).then(res => res.data);
 
 //implement update user
 // export const updateprofile = (user) =>

@@ -19,6 +19,7 @@ import UserListComponent from "../components/users/UserListComponent";
 import LikedRecipesComponent from "../components/users/LikedRecipesComponent";
 import UserCreatedRecipe from "../components/users/UserCreatedRecipe";
 import userReducer from "../reducers/userReducer";
+import PublicProfile from "../components/users/PublicProfile";
 
 const reducer = combineReducers({ user: userReducer, recipe: recipeReducer });
 const store = createStore(reducer);
@@ -53,10 +54,23 @@ class LandingPageContainer extends Component {
             <Route path="/update-profile" exact={true} component={UpdateProfile}/>
             <Route path="/user-list" exact={true} component={UserListComponent} />
 
-            <Route path="/liked-recipes" exact={true} component={LikedRecipesComponent}/>
-            <Route path="/create-recipe" exact={true} component={UserCreatedRecipe}/>
-          </Router>
-        </Provider>
+          <Route
+            path="/liked-recipes"
+            exact={true}
+            component={LikedRecipesComponent}
+          />
+          <Route
+            path="/create-recipe"
+            exact={true}
+            component={UserCreatedRecipe}
+          />
+          <Route
+              path="/profile/:username"
+              exact={true}
+              render={(props) => <PublicProfile username={props.match.params.username}/>}
+          />
+        </Router>
+      </Provider>
     );
   }
 }

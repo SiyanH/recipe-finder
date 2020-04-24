@@ -71,11 +71,20 @@ class Profile extends React.Component {
         </button>
 
         {this.props.profile.username && (
-          <div container col-6>
+
+          <div>
             <p className="jumbotron"> Chefs I Follow! </p>
-            <p>{this.props.profile.subscribeToOthers}</p>
-            <p className="jumbotron"> Chefs That Follow Me! </p>
-            <p>{this.props.profile.subscriptionsFromOthers}</p>
+            <ul className="list-group">
+              {this.props.profile.subscribedUsers.map((subscribedUser) => (
+                <li className="list-group-item">{subscribedUser}</li>
+              ))}
+            </ul>
+            <p className="jumbotron"> Chefs Who Follow Me! </p>
+            <ul className="list-group">
+              {this.props.profile.followers.map((follower) => (
+                <li className="list-group-item">{follower}</li>
+              ))}
+            </ul>{" "}
           </div>
         )}
       </div>
