@@ -25,7 +25,7 @@ module.exports = (app) => {
     // register user
     app.post("/api/users", (req, res) => {
         const newUser = req.body;
-        console.log(JSON.stringify(req.body));
+        // console.log(JSON.stringify(req.body));
         userDao
             .createUser(newUser)
             .then((actualUser) => {
@@ -98,8 +98,8 @@ module.exports = (app) => {
         const userId = profile._id;
         const newUser = req.body;
 
-        userDao.updateUser(userId, newUser).then((updatedUser) => {
-            req.session["profile"] = newUser;
+        userDao.updateUser(userId, newUser).then(updatedUser => {
+            req.session["profile"] = updatedUser;
             res.send(updatedUser);
         });
     });
@@ -128,18 +128,25 @@ module.exports = (app) => {
     //   });
     // });
 
+    //get followers
+    app.get("/api/users/:userId/followers", (req, res) => {
+        userDao.findFollowers(req.params.userId)
+            .then(followers => res.send(followers));
+    });
+
     //subscribe to other user
     app.post("/api/users/subscribe", (req, res) => {
         // Get current user profile
         const profile = req.session["profile"];
         userDao
             .subscribe(req.body, profile._id)
-            .then((updatedUser) => res.send(updatedUser));
+            .then(updatedUser => {
+                req.session["profile"] = updatedUser;
+                res.send(updatedUser);
+            });
     });
 
     // delete a user
-    app.delete("/api/users/delete/:user", (req, res) => {
-        const userName = req.params.user;
-        userDao.deleteUserByUserName(userName).then((status) => res.send(status));
-    });
+    app.delete("/api/users/delete/:username", (req, res) =>
+        userDao.deleteUserByUserName(req.params.username).then(status => res.send(status)));
 };

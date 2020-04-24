@@ -1,6 +1,5 @@
 import {API} from "../common/constants";
 import fetchJsonp from "fetch-jsonp";
-import axios from "axios";
 
 /**
  * Find recipes with given query text and range of results.

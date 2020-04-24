@@ -51,14 +51,16 @@ const addCreatedRecipeToUser = async (recipe, userId) => {
 
 const updateUser = (userId, newUser) => {
   //query to find it, updated data, returns the actual updated data
-  return userModel.update({ _id: userId }, newUser, { new: true });
+  return userModel.findOneAndUpdate({ _id: userId }, newUser, { new: true })
+      .populate("subscribedUsers", "username")
+      .populate("followers", "username")
 };
 
 const findUserByCredentials = (username, password) => {
   return userModel.findOne({
     username: username,
     password: password,
-  });
+  }).populate("subscribedUsers", "username");
 };
 
 const deleteUser = (uid) => userModel.deleteOne({ _id: uid });
@@ -78,14 +80,20 @@ const subscribe = async (otherUser, userId) => {
   );
 
   // Update current user with userId
-  return userModel.updateOne(
+  return userModel.findOneAndUpdate(
     {
       _id: userId,
     },
     { $push: { subscribedUsers: otherUser._id } },
     { new: true }
-  );
+  ).populate("subscribedUsers", "username");
 };
+
+// find followers
+const findFollowers = (userId) =>
+    userModel.findOne({_id: userId})
+        .populate("followers", "username")
+        .then(user => user.followers);
 
 // TODO: Find all recipes for user
 
@@ -101,4 +109,5 @@ module.exports = {
   subscribe,
   findUserByUserName,
   deleteUserByUserName,
+  findFollowers
 };
