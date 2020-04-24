@@ -73,9 +73,9 @@ class Profile extends React.Component {
         {this.props.profile.username && (
           <div>
             <p className="jumbotron"> Cooks I Follow! </p>
-            <p>{this.props.profile.subscribeToOthers}</p>
+            <p>{this.props.profile.subscribedUsers}</p>
             <p className="jumbotron"> Cooks That Follow Me! </p>
-            <p>{this.props.profile.subscriptionsFromOthers}</p>
+            <p>{this.props.profile.followers}</p>
           </div>
         )}
       </div>

@@ -100,24 +100,27 @@ const FileUpload = () => {
           </div>
         </div>
       ) : null}
-      {labels.map(
-        (label) =>
-          label.description && (
-            <div>
-              <ul className="list-group ">
-                <li className="list-group-item">
-                  Guess: {label.description} Score: {label.score}
-                  {label.recipe && (
-                    <>
-                      <br />
-                      Matched recipe to search: {label.recipe.label}
-                    </>
-                  )}
-                </li>
-              </ul>
-            </div>
-          )
-      )}
+
+      <div>
+        {labels.map(
+          (label) =>
+            label.description && (
+              <div>
+                <ul className="text-center" className="list-group ">
+                  <li className="list-group-item">
+                    Guess: {label.description} Score: {label.score}
+                    {label.recipe && (
+                      <>
+                        <br />
+                        Matched recipe to search: {label.recipe.label}
+                      </>
+                    )}
+                  </li>
+                </ul>
+              </div>
+            )
+        )}
+      </div>
     </div>
   );
 };
