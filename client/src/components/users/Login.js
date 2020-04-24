@@ -16,7 +16,6 @@ export default class Login extends React.Component {
     try {
       this.setState({ error: false });
       await login(user);
-      console.log({ user });
       this.props.history.push("./profile");
     } catch (e) {
       this.setState({ error: true });

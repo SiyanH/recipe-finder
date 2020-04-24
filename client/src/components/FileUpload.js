@@ -110,7 +110,7 @@ const FileUpload = () => {
           (label) =>
             label.description && (
               <div>
-                <ul className="text-center app-text-small" className="list-group ">
+                <ul className="text-center app-text-small list-group ">
                   <li className="list-group-item">
                     Guess: {label.description} Score: {label.score}
                     {label.recipe && (

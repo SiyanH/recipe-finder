@@ -8,18 +8,22 @@ module.exports = (app) => {
         const newRecipe = await recipeDao.createRecipe(req.body);
         userDao
             .addCreatedRecipeToUser(newRecipe, profile._id)
-            .then((updatedUser) => res.send(updatedUser));
+            .then(updatedUser => {
+                req.session["profile"] = updatedUser;
+                res.send(updatedUser);
+            });
     });
 
     //add recipe from api
     app.post("/api/users/edamamrecipes", (req, res) => {
         //variable for recipe
-        console.log(JSON.stringify(req.body));
+        // console.log(JSON.stringify(req.body));
         const profile = req.session["profile"];
         const {url} = req.body;
-        console.log({url});
+        // console.log({url});
         const userId = profile._id;
-        userDao.addEdamamRecipeToUser(url, userId).then((updatedUser) => {
+        userDao.addEdamamRecipeToUser(url, userId).then(updatedUser => {
+            req.session["profile"] = updatedUser;
             res.send(updatedUser);
         });
     });

@@ -58,7 +58,7 @@ const findUserByCredentials = (username, password) => {
   return userModel.findOne({
     username: username,
     password: password,
-  });
+  }).populate("subscribedUsers", "username");
 };
 
 const deleteUser = (uid) => userModel.deleteOne({ _id: uid });
@@ -78,14 +78,20 @@ const subscribe = async (otherUser, userId) => {
   );
 
   // Update current user with userId
-  return userModel.updateOne(
+  return userModel.findOneAndUpdate(
     {
       _id: userId,
     },
     { $push: { subscribedUsers: otherUser._id } },
     { new: true }
-  );
+  ).populate("subscribedUsers", "username");
 };
+
+// find followers
+const findFollowers = (userId) =>
+    userModel.findOne({_id: userId})
+        .populate("followers", "username")
+        .then(user => user.followers);
 
 // TODO: Find all recipes for user
 
@@ -101,4 +107,5 @@ module.exports = {
   subscribe,
   findUserByUserName,
   deleteUserByUserName,
+  findFollowers
 };
