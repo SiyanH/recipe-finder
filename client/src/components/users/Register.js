@@ -12,7 +12,14 @@ export default class Register extends React.Component {
   };
   //if username is already taken you have to get something else ***
   handleregister = (user) =>
-    register(user).then((newUser) => this.props.history.push("./profile"));
+    register(user)
+      .then((newUser) => {
+        console.log(newUser);
+        this.props.history.push("./profile");
+      })
+      .catch((err) => {
+        console.log("Register:error");
+      });
 
   onRadioChange = (e) => {
     this.setState({
@@ -22,8 +29,8 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Register</h1>
+      <div className= 'container mt-4 mb-4'>
+        <h1 className='display-6 app-header-font'>Register</h1>
         <input
           value={this.state.username}
           onChange={(e) =>
@@ -31,7 +38,7 @@ export default class Register extends React.Component {
               username: e.target.value,
             })
           }
-          className={"form-control"}
+          className="form-control app-margin-block col-5"
           placeholder="username"
         />
         <input
@@ -41,7 +48,7 @@ export default class Register extends React.Component {
               password: e.target.value,
             })
           }
-          className={"form-control"}
+          className="form-control app-margin-block col-5"
           type={"password"}
           placeholder="password"
         />
@@ -52,7 +59,7 @@ export default class Register extends React.Component {
               first: e.target.value,
             })
           }
-          className={"form-control"}
+          className="form-control app-margin-block col-5"
           placeholder="first name"
         />
         <input
@@ -62,7 +69,7 @@ export default class Register extends React.Component {
               last: e.target.value,
             })
           }
-          className={"form-control"}
+          className="form-control app-margin-block col-5"
           placeholder="last name"
         />
         {/*<input*/}
@@ -92,13 +99,13 @@ export default class Register extends React.Component {
         <span>ADMIN</span>
         <button
           onClick={() => this.handleregister(this.state)}
-          className={"btn btn-primary btn-block"}
+          className="btn app-primary-button app-margin-block col-5"
         >
           Register
         </button>
         <button
           onClick={() => this.props.history.push("./")}
-          className={"btn btn-primary btn-block"}
+          className="btn app-primary-button app-margin-block col-5"
         >
           Home
         </button>

@@ -1,15 +1,6 @@
 const userDao = require("../daos/users.dao.server");
 
 module.exports = (app) => {
-    const register = (req, res) => {
-        const user = req.body;
-        userDao.createUser(user).then((actualUser) => {
-            req.session["profile"] = actualUser;
-            actualUser.password = "****";
-            res.send(actualUser);
-        });
-    };
-
     const profile = (req, res) => res.send(req.session["profile"]);
 
     const logout = (req, res) => {
@@ -30,17 +21,22 @@ module.exports = (app) => {
     app.post("/login", login);
     app.post("/logout", logout);
     app.post("/profile", profile);
-    app.post("/register", register);
 
     // register user
     app.post("/api/users", (req, res) => {
         const newUser = req.body;
-        // console.log(JSON.stringify(req.body));
-        userDao.createUser(newUser).then((actualUser) => {
-            req.session["profile"] = actualUser;
-            actualUser.password = "****";
-            res.send(actualUser);
-        });
+        console.log(JSON.stringify(req.body));
+        userDao
+            .createUser(newUser)
+            .then((actualUser) => {
+                req.session["profile"] = actualUser;
+                actualUser.password = "****";
+                res.send(actualUser);
+            })
+            .catch((err) => {
+                //console.log("controller: doesthiswork?");
+                res.send("Error");
+            });
     });
 
     // delete a user

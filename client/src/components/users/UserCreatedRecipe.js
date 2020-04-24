@@ -99,6 +99,7 @@ class UserCreatedRecipe extends React.Component {
             </div>
         );
     }
+
 }
 
 const stateToPropertyMapper = (state) => {
