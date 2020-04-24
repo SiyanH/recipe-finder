@@ -8,10 +8,17 @@ export default class UpdateProfile extends React.Component {
     password: "",
     first: "",
     last: "",
+    role: "",
   };
   //if username is already taken you have to get something else ***
   handleupdate = (user) =>
     updateProfile(user).then((newUser) => this.props.history.push("./profile"));
+
+  onRadioChange = (e) => {
+    this.setState({
+      role: e.target.value,
+    });
+  };
 
   render() {
     return (
@@ -60,6 +67,21 @@ export default class UpdateProfile extends React.Component {
           className="form-control app-margin-block col-5"
           placeholder="last name"
         />
+
+        <input
+          type="radio"
+          name="role"
+          value="USER"
+          onChange={this.onRadioChange}
+        />
+        <span>USER</span>
+        <input
+          type="radio"
+          name="role"
+          value="ADMIN"
+          onChange={this.onRadioChange}
+        />
+        <span>ADMIN</span>
         <button
           onClick={() => this.handleupdate(this.state)}
           className="btn btn-primary btn-block app-margin-block app-primary-button col-5"

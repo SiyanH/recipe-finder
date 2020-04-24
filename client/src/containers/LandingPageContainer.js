@@ -20,6 +20,7 @@ import LikedRecipesComponent from "../components/users/LikedRecipesComponent";
 import UserCreatedRecipe from "../components/users/UserCreatedRecipe";
 import userReducer from "../reducers/userReducer";
 import PublicProfile from "../components/users/PublicProfile";
+import SubscriptionInformation from "../components/users/SubscriptionInformation";
 
 const reducer = combineReducers({ user: userReducer, recipe: recipeReducer });
 const store = createStore(reducer);
@@ -27,32 +28,48 @@ const store = createStore(reducer);
 class LandingPageContainer extends Component {
   render() {
     return (
-        <Provider store={store}>
-          <Router>
-            <NavbarComponent />
-            <Switch>
-              <Redirect exact from="/recipes/:query" to="/recipes/:query/0" />
-              <Route
-                  path={["/", "/recipes/:query/:index"]}
-                  exact={true}
-                  render={(props) => (
-                      <RecipeFinderComponent
-                          history={props.history}
-                          query={props.match.params.query}
-                          index={props.match.params.index}
-                      />
-                  )}
-              />
-            </Switch>
+      <Provider store={store}>
+        <Router>
+          <NavbarComponent />
+          <Switch>
+            <Redirect exact from="/recipes/:query" to="/recipes/:query/0" />
+            <Route
+              path={["/", "/recipes/:query/:index"]}
+              exact={true}
+              render={(props) => (
+                <RecipeFinderComponent
+                  history={props.history}
+                  query={props.match.params.query}
+                  index={props.match.params.index}
+                />
+              )}
+            />
+          </Switch>
 
-            <Route path="/privacy-policy" exact={true} component={PrivacyPolicy}/>
+          <Route
+            path="/privacy-policy"
+            exact={true}
+            component={PrivacyPolicy}
+          />
 
-            <Route path="/register" exact={true} component={Register} />
-            <Route path="/profile" exact={true} component={Profile} />
+          {/*<Route path="/register" exact={true} component={Register} />*/}
+          {/*<Route path="/profile" exact={true} component={Profile} />*/}
+          {/*<Route*/}
+          {/*path="/subscriptions"*/}
+          {/*exact={true}*/}
+          {/*component={SubscriptionInformation}*/}
+          {/*/>*/}
 
-            <Route path="/login" exact={true} component={Login} />
-            <Route path="/update-profile" exact={true} component={UpdateProfile}/>
-            <Route path="/user-list" exact={true} component={UserListComponent} />
+          <Route path="/register" exact={true} component={Register} />
+          <Route path="/profile" exact={true} component={Profile} />
+
+          <Route path="/login" exact={true} component={Login} />
+          <Route
+            path="/update-profile"
+            exact={true}
+            component={UpdateProfile}
+          />
+          <Route path="/user-list" exact={true} component={UserListComponent} />
 
           <Route
             path="/liked-recipes"
@@ -65,9 +82,11 @@ class LandingPageContainer extends Component {
             component={UserCreatedRecipe}
           />
           <Route
-              path="/profile/:username"
-              exact={true}
-              render={(props) => <PublicProfile username={props.match.params.username}/>}
+            path="/profile/:username"
+            exact={true}
+            render={(props) => (
+              <PublicProfile username={props.match.params.username} />
+            )}
           />
         </Router>
       </Provider>
