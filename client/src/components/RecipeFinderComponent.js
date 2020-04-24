@@ -10,7 +10,9 @@ const RecipeFinderComponent = ({ history, query, index }) => (
     </h4>
     <h4 className="app-big-font">Search with Images</h4>
     <FileUpload />
-    <h4 className="app-big-font">Search with Words</h4>
+    <h4 className="app-big-font" className="row mt-5 justify-content-center">
+      Search with Words
+    </h4>
     <SearchBarComponent history={history} query={query} />
     {query !== undefined && (
       <SearchResultContainer query={query} index={index} history={history} />

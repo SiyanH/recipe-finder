@@ -1,10 +1,22 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
+//Import google cloud client library
+const vision = require("@google-cloud/vision");
+
 const session = require("express-session");
 // IMPORT MODELS
 
 const app = express();
+
+//Create client
+//Create client
+const client = new vision.ImageAnnotatorClient({
+  keyFilename: "key.json",
+});
+
+app.use(fileUpload());
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
@@ -22,6 +34,42 @@ app.use(
   })
 );
 
+// Upload Endpoint
+app.post("/upload", (req, res) => {
+  if (req.files === null) {
+    return res.status(400).json({ msg: "No file uploaded" });
+  }
+
+  const file = req.files.file;
+
+  file.mv(`${__dirname}/resources/${file.name}`, (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send(err);
+    }
+    client
+      .labelDetection(`${__dirname}/resources/${file.name}`)
+      .then((results) => {
+        const labels = results[0].labelAnnotations;
+
+        const labelSummaries = labels.map((label) => ({
+          description: label.description,
+          score: label.score,
+        }));
+
+        // console.log({labels});
+        // console.log({labelSummaries});
+        res.json({
+          fileName: file.name,
+          filePath: `/uploads/${file.name}`,
+          resultSummaries: labelSummaries,
+        });
+      })
+      .catch((err) => {
+        console.error("ERROR:", err);
+      });
+  });
+});
 //IMPORT ROUTES
 require("./controllers/users.controller.server")(app);
 require("./controllers/recipes.controller.server")(app);
