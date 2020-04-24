@@ -56,7 +56,7 @@ export default class Login extends React.Component {
 
           <button
             onClick={() => this.handlelogin(this.state.user)}
-            className="btn app-primary-button app-margin-block col-5"
+            className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
           >
             Login
           </button>

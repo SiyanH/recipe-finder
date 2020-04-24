@@ -99,13 +99,13 @@ export default class Register extends React.Component {
         <span>ADMIN</span>
         <button
           onClick={() => this.handleregister(this.state)}
-          className="btn app-primary-button app-margin-block col-5"
+          className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
         >
           Register
         </button>
         <button
           onClick={() => this.props.history.push("./")}
-          className="btn app-primary-button app-margin-block col-5"
+          className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
         >
           Home
         </button>

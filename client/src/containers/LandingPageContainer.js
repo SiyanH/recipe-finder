@@ -18,9 +18,6 @@ import PrivacyPolicy from "../components/PrivacyPolicy";
 import UserListComponent from "../components/users/UserListComponent";
 import LikedRecipesComponent from "../components/users/LikedRecipesComponent";
 import UserCreatedRecipe from "../components/users/UserCreatedRecipe";
-
-import Home from "../components/Home";
-
 import userReducer from "../reducers/userReducer";
 import PublicProfile from "../components/users/PublicProfile";
 import SubscriptionInformation from "../components/users/SubscriptionInformation";
@@ -49,20 +46,22 @@ class LandingPageContainer extends Component {
             />
           </Switch>
 
-          <Route path="/" exact={true} component={Home} />
           <Route
             path="/privacy-policy"
             exact={true}
             component={PrivacyPolicy}
           />
 
+          {/*<Route path="/register" exact={true} component={Register} />*/}
+          {/*<Route path="/profile" exact={true} component={Profile} />*/}
+          {/*<Route*/}
+          {/*path="/subscriptions"*/}
+          {/*exact={true}*/}
+          {/*component={SubscriptionInformation}*/}
+          {/*/>*/}
+
           <Route path="/register" exact={true} component={Register} />
           <Route path="/profile" exact={true} component={Profile} />
-          <Route
-            path="/subscriptions"
-            exact={true}
-            component={SubscriptionInformation}
-          />
 
           <Route path="/login" exact={true} component={Login} />
           <Route
