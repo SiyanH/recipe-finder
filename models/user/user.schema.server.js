@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const arrayUniquePlugin = require('mongoose-unique-array');
 
 const userSchema = mongoose.Schema(
     {
@@ -15,8 +14,7 @@ const userSchema = mongoose.Schema(
             },
         ],
         recipesFromApi: [{
-            type: String,
-            unique: true
+            type: String
         }],
         role: {
             type: String,
@@ -24,17 +22,13 @@ const userSchema = mongoose.Schema(
         },
         subscribedUsers: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: "UserModel",
-            unique: true
+            ref: "UserModel"
         }],
         followers: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: "UserModel",
-            unique: true
+            ref: "UserModel"
         }]
     }, {collection: "users"}
 );
-
-userSchema.plugin(arrayUniquePlugin);
 
 module.exports = userSchema;

@@ -10,7 +10,7 @@ export const profile = async () => axios.get("/api/users/profile");
 //implement login
 export const login = (user) => axios.post("/api/login", user);
 
-//implement login
+//implement logout
 export const logout = () => axios.post("/logout");
 
 //update user profile
@@ -22,16 +22,17 @@ export const addRecipeToUser = (recipe) =>
 
 //subscribe to user
 export const subscribe = (user) =>
-  axios
-    .post("/api/users/subscribe", user)
-    .then(res => res.data);
-
-//Get all users on the database
-export const findAllUsers = () => axios.get("/api/users");
+  axios.post("/api/users/subscribe", user).then((res) => res.data);
 
 //Delete users on the database
 export const deleteUser = (username) =>
   axios.delete(`/api/users/delete/${username}`).then((res) => console.log(res));
+
+//add usercreated recipe
+export const createRecipe = (recipe) => axios.post("/api/recipes", recipe);
+
+//Get all users on the database
+export const findAllUsers = () => axios.get("/api/users");
 
 //implement update user
 // export const updateprofile = (user) =>
@@ -39,7 +40,7 @@ export const deleteUser = (username) =>
 //                                                    console.log(res))
 
 export default {
-    subscribe,
-    deleteUser,
-    findAllUsers
-}
+  subscribe,
+  deleteUser,
+  findAllUsers,
+};

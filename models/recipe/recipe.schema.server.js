@@ -1,26 +1,29 @@
-const mongoose = require('mongoose');
-const arrayUniquePlugin = require('mongoose-unique-array');
+const mongoose = require("mongoose");
 
-const recipeSchema = mongoose.Schema({
-                                         label: String,
-                                         image: String,
-                                         source: String,
-                                         url: String,
-                                         ingredientLines: [String],
-                                         createdAt: Date,
-                                         modifiedAt: Date,
-                                         comments: [{
-                                             type: mongoose.Schema.Types.ObjectId,
-                                             ref: 'CommentModel',
-                                             unique: true
-                                         }],
-                                         likes: [{
-                                             type: mongoose.Schema.Types.ObjectId,
-                                             ref: 'UserModel',
-                                             unique: true
-                                         }]
-                                     }, {collection: 'recipes'});
-
-recipeSchema.plugin(arrayUniquePlugin);
+const recipeSchema = mongoose.Schema(
+    {
+        label: String,
+        image: String,
+        source: String,
+        url: String,
+        userProvidedIngredients: String,
+        userProvidedInstructions: String,
+        ingredientLines: [String],
+        createdAt: Date,
+        modifiedAt: Date,
+        comments: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "CommentModel"
+            },
+        ],
+        likes: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "UserModel"
+            },
+        ],
+    }, {collection: "recipes"}
+);
 
 module.exports = recipeSchema;

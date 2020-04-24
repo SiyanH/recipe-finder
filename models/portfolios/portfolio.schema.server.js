@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const arrayUniquePlugin = require('mongoose-unique-array');
 
 const portfolioSchema = mongoose.Schema({
                                             name: String,
@@ -10,15 +9,12 @@ const portfolioSchema = mongoose.Schema({
                                             modifiedAt: Date,
                                             recipes: [{
                                                 type: mongoose.Schema.Types.ObjectId,
-                                                ref: 'RecipeModel',
-                                                unique: true
+                                                ref: 'RecipeModel'
                                             }],
                                             publisher: {
                                                 type: mongoose.Schema.Types.ObjectId,
                                                 ref: 'RecipeModel'
                                             },
                                         }, {collection: 'portfolios'});
-
-portfolioSchema.plugin(arrayUniquePlugin);
 
 module.exports = portfolioSchema;

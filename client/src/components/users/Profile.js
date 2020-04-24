@@ -47,14 +47,24 @@ class Profile extends React.Component {
                 </button>
 
                 {
-                    this.props.profile.username &&
-                    <button
-                        onClick={() => this.props.history.push("./liked-recipes")}
-                        className="btn app-primary-button app-margin-block col-5"
-                    >
-                        View Liked Recipes
-                    </button>
-                }
+                    this.props.profile.username && (
+                        <button
+                            onClick={() => this.props.history.push("./liked-recipes")}
+                            className="btn app-primary-button app-margin-block col-5"
+                        >
+                            View Liked Recipes
+                        </button>
+                    )}
+
+                {
+                    this.props.profile.username && (
+                        <button
+                            onClick={() => this.props.history.push("./create-recipe")}
+                            className="btn app-primary-button app-margin-block col-5"
+                        >
+                            Create Your Own Recipe!
+                        </button>
+                    )}
 
                 <button
                     onClick={() => this.props.history.push("./")}
@@ -63,14 +73,15 @@ class Profile extends React.Component {
                     Home
                 </button>
 
-                {this.props.profile.username && (
-                    <div>
-                        <p className="jumbotron"> Cooks I Follow! </p>
-                        <p>{this.props.profile.subscribedUsers}</p>
-                        <p className="jumbotron"> Cooks That Follow Me! </p>
-                        <p>{this.props.profile.followers}</p>
-                    </div>
-                )}
+                {
+                    this.props.profile.username && (
+                        <div>
+                            <p className="jumbotron"> Cooks I Follow! </p>
+                            <p>{this.props.profile.subscribeToOthers}</p>
+                            <p className="jumbotron"> Cooks That Follow Me! </p>
+                            <p>{this.props.profile.subscriptionsFromOthers}</p>
+                        </div>
+                    )}
             </div>
         );
     }
@@ -78,7 +89,7 @@ class Profile extends React.Component {
 
 const stateToPropertyMapper = (state) => {
     return {
-        profile: state.user.profile
+        profile: state.user.profile,
     };
 };
 
