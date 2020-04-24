@@ -1,4 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const arrayUniquePlugin = require('mongoose-unique-array');
+
 const recipeSchema = mongoose.Schema({
                                          label: String,
                                          image: String,
@@ -9,12 +11,16 @@ const recipeSchema = mongoose.Schema({
                                          modifiedAt: Date,
                                          comments: [{
                                              type: mongoose.Schema.Types.ObjectId,
-                                             ref: 'CommentModel'
+                                             ref: 'CommentModel',
+                                             unique: true
                                          }],
                                          likes: [{
                                              type: mongoose.Schema.Types.ObjectId,
-                                             ref: 'UserModel'
+                                             ref: 'UserModel',
+                                             unique: true
                                          }]
-                                     }, {collection: 'recipes'})
+                                     }, {collection: 'recipes'});
 
-module.exports = recipeSchema
+recipeSchema.plugin(arrayUniquePlugin);
+
+module.exports = recipeSchema;

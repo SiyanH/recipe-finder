@@ -29,12 +29,15 @@ class Profile extends React.Component {
                     <p>Username: {this.props.profile.username}</p>
                 )}
 
-                <button
-                    onClick={() => this.props.history.push("./update-profile")}
-                    className="btn app-primary-button app-margin-block col-5"
-                >
-                    Update Profile Information
-                </button>
+                {
+                    this.props.profile.username &&
+                    <button
+                        onClick={() => this.props.history.push("./update-profile")}
+                        className="btn app-primary-button app-margin-block col-5"
+                    >
+                        Update Profile Information
+                    </button>
+                }
 
                 <button
                     onClick={() => this.props.history.push("./user-list")}
@@ -43,12 +46,16 @@ class Profile extends React.Component {
                     User List
                 </button>
 
-                <button
-                    onClick={() => this.props.history.push("./liked-recipes")}
-                    className="btn app-primary-button app-margin-block col-5"
-                >
-                    View Liked Recipes
-                </button>
+                {
+                    this.props.profile.username &&
+                    <button
+                        onClick={() => this.props.history.push("./liked-recipes")}
+                        className="btn app-primary-button app-margin-block col-5"
+                    >
+                        View Liked Recipes
+                    </button>
+                }
+
                 <button
                     onClick={() => this.props.history.push("./")}
                     className="btn app-primary-button app-margin-block col-5"
