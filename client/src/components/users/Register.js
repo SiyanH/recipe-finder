@@ -70,25 +70,26 @@ export default class Register extends React.Component {
             })
           }
           className="form-control app-margin-block col-5"
-          placeholder="last name"
-        />
-        <input
-          type="radio"
-          name="role"
-          value="USER"
-          onChange={this.onRadioChange}
-        />
-        <span>USER</span>
-        <input
-          type="radio"
-          name="role"
-          value="ADMIN"
-          onChange={this.onRadioChange}
-        />
-        <span>ADMIN</span>
+          placeholder="last name"/>
+          <div className='form-inline'>
+              <div className="form-check m-1 app-text-font">
+                      <input type="radio"
+                             className="form-check-input"
+                             name="optradio"
+                             onChange={this.onRadioChange}/>
+                             User
+              </div>
+              <div className="form-check m-1 app-text-font">
+                      <input type="radio"
+                             className="form-check-input"
+                             name="optradio"
+                             onChange={this.onRadioChange}/>
+                             Admin
+              </div>
+          </div>
         <button
           onClick={() => this.handleregister(this.state)}
-          className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
+          className="btn btn-primary btn-block app-primary-button col-5"
         >
           Register
         </button>

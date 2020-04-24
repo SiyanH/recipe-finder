@@ -23,7 +23,7 @@ class NavbarComponent extends React.Component {
     return (
         <nav className="navbar-expand-sm navbar-light bg-light">
           {/*BRAND HEADING*/}
-          <div className="navbar-collapse">
+          <div className=" collapse navbar-collapse">
             <i id="cookie-icon" className="fas fa-cookie-bite"></i>
             <Link to="/" className="navbar-brand fas">
               {" "}
