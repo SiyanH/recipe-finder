@@ -1,5 +1,6 @@
 import {API} from "../common/constants";
 import fetchJsonp from "fetch-jsonp";
+import axios from "axios";
 
 /**
  * Find recipes with given query text and range of results.
@@ -14,6 +15,10 @@ export const findRecipes = (query, from, to) => {
         .then(result => result.hits);
 };
 
+export const findUserCreatedRecipes = (uid) =>
+    fetch(`/api/users/${uid}/recipes`).then(res => res.json());
+
 export default {
-    findRecipes
+    findRecipes,
+    findUserCreatedRecipes
 }
