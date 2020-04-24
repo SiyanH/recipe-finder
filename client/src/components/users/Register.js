@@ -29,8 +29,8 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <div className= 'container mt-4 mb-4'>
-        <h1 className='display-6 app-header-font'>Register</h1>
+      <div className="container mt-4 mb-4">
+        <h1 className="display-6 app-header-font">Register</h1>
         <input
           value={this.state.username}
           onChange={(e) =>
