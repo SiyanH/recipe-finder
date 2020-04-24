@@ -32,12 +32,11 @@ const addEdamamRecipeToUser = async (url, userId) => {
 
 //add user created recipe to the user
 const addCreatedRecipeToUser = async (recipe, userId) => {
-    const user = await findUserById(userId);
     return userModel.update(
         {
             _id: userId,
         },
-        {recipes: user.recipes.concat(recipe)}
+        {$push: {recipes: recipe}}
     );
 };
 
