@@ -2,6 +2,7 @@ import React from "react";
 import {createRecipe} from "../../services/userService";
 import {findUserCreatedRecipes} from "../../services/recipeService";
 import {connect} from "react-redux";
+import CreatedRecipeList from "./CreatedRecipeList";
 
 class UserCreatedRecipe extends React.Component {
     state = {
@@ -94,21 +95,7 @@ class UserCreatedRecipe extends React.Component {
                     Home
                 </button>
                 <br/>
-                <div className="card-columns">
-                    {
-                        this.state.recipes.map(
-                            recipe =>
-                                <div key={recipe._id} className="card bg-light mb-3">
-                                    <div className="card-header">{recipe.label}{recipe._id}</div>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Ingredients</h5>
-                                        <p>{recipe.userProvidedIngredients}</p>
-                                        <h5 className="card-title">Instructions</h5>
-                                        <p>{recipe.userProvidedInstructions}</p>
-                                    </div>
-                                </div>)
-                    }
-                </div>
+                <CreatedRecipeList recipes={this.state.recipes}/>
             </div>
         );
     }
