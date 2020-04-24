@@ -22,7 +22,7 @@ class SearchBarComponent extends Component {
         return (
             <div className="input-group app-search-bar">
                 <label className="sr-only" htmlFor="recipeSearchFld">Recipe name</label>
-                <input id="recipeSearchFld" className="form-control col-6"
+                <input id="recipeSearchFld" className="form-control"
                        placeholder="Search recipes..." type="text"
                        defaultValue={this.state.query}
                        onChange={e => this.changeQuery(e.target.value)}
