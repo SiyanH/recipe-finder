@@ -32,7 +32,7 @@ class Profile extends React.Component {
         {this.props.profile.username && (
           <button
             onClick={() => this.props.history.push("./update-profile")}
-            className="btn app-primary-button app-margin-block col-5"
+            className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
           >
             Update Profile Information
           </button>
@@ -40,7 +40,7 @@ class Profile extends React.Component {
 
         <button
           onClick={() => this.props.history.push("./user-list")}
-          className="btn app-primary-button app-margin-block col-5"
+          className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
         >
           User List
         </button>
@@ -48,7 +48,7 @@ class Profile extends React.Component {
         {this.props.profile.username && (
           <button
             onClick={() => this.props.history.push("./liked-recipes")}
-            className="btn app-primary-button app-margin-block col-5"
+            className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
           >
             View Liked Recipes
           </button>
@@ -57,7 +57,7 @@ class Profile extends React.Component {
         {this.props.profile.username && (
           <button
             onClick={() => this.props.history.push("./create-recipe")}
-            className="btn app-primary-button app-margin-block col-5"
+            className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
           >
             Create Your Own Recipe!
           </button>
@@ -65,20 +65,18 @@ class Profile extends React.Component {
 
         <button
           onClick={() => this.props.history.push("./")}
-          className="btn app-primary-button app-margin-block col-5"
+          className="btn btn-primary btn-block app-margin-block app-primary-button col-5"
         >
           Home
         </button>
 
         {this.props.profile.username && (
+
           <div>
-            <p className="jumbotron"> Cooks I Follow! </p>
-            <ul className="list-group">
-              {this.props.profile.subscribedUsers.map((subscribedUser) => (
-                <li className="list-group-item">{subscribedUser}</li>
-              ))}
-            </ul>
-            <p className="jumbotron"> Cooks That Follow Me! </p>
+
+            <p className="jumbotron"> Chefs Who Follow Me! </p>
+            <p className="jumbotron"> Chefs That Follow Me! </p>
+
             <ul className="list-group">
               {this.props.profile.followers.map((follower) => (
                 <li className="list-group-item">{follower}</li>

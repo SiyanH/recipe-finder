@@ -18,9 +18,6 @@ import PrivacyPolicy from "../components/PrivacyPolicy";
 import UserListComponent from "../components/users/UserListComponent";
 import LikedRecipesComponent from "../components/users/LikedRecipesComponent";
 import UserCreatedRecipe from "../components/users/UserCreatedRecipe";
-
-import Home from "../components/Home";
-
 import userReducer from "../reducers/userReducer";
 import PublicProfile from "../components/users/PublicProfile";
 
@@ -30,41 +27,32 @@ const store = createStore(reducer);
 class LandingPageContainer extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <Router>
-          <NavbarComponent />
-          <Switch>
-            <Redirect exact from="/recipes/:query" to="/recipes/:query/0" />
-            <Route
-              path={["/", "/recipes/:query/:index"]}
-              exact={true}
-              render={(props) => (
-                <RecipeFinderComponent
-                  history={props.history}
-                  query={props.match.params.query}
-                  index={props.match.params.index}
-                />
-              )}
-            />
-          </Switch>
+        <Provider store={store}>
+          <Router>
+            <NavbarComponent />
+            <Switch>
+              <Redirect exact from="/recipes/:query" to="/recipes/:query/0" />
+              <Route
+                  path={["/", "/recipes/:query/:index"]}
+                  exact={true}
+                  render={(props) => (
+                      <RecipeFinderComponent
+                          history={props.history}
+                          query={props.match.params.query}
+                          index={props.match.params.index}
+                      />
+                  )}
+              />
+            </Switch>
 
-          <Route path="/" exact={true} component={Home} />
-          <Route
-            path="/privacy-policy"
-            exact={true}
-            component={PrivacyPolicy}
-          />
+            <Route path="/privacy-policy" exact={true} component={PrivacyPolicy}/>
 
-          <Route path="/register" exact={true} component={Register} />
-          <Route path="/profile" exact={true} component={Profile} />
+            <Route path="/register" exact={true} component={Register} />
+            <Route path="/profile" exact={true} component={Profile} />
 
-          <Route path="/login" exact={true} component={Login} />
-          <Route
-            path="/update-profile"
-            exact={true}
-            component={UpdateProfile}
-          />
-          <Route path="/user-list" exact={true} component={UserListComponent} />
+            <Route path="/login" exact={true} component={Login} />
+            <Route path="/update-profile" exact={true} component={UpdateProfile}/>
+            <Route path="/user-list" exact={true} component={UserListComponent} />
 
           <Route
             path="/liked-recipes"
