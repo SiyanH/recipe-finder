@@ -11,9 +11,7 @@ class NavbarComponent extends React.Component {
     navCollapsed: true};
 
   componentDidMount() {
-    userService.findAllUsers().then((response) => {
-      this.setState({ users: response.data });
-    });
+    userService.findAllUsers().then();
   }
 
   toggleNav = () => {
@@ -24,13 +22,14 @@ class NavbarComponent extends React.Component {
     const {navCollapsed} = this.state
     return (
         <nav className="navbar-expand-sm navbar-light bg-light">
+          {/*BRAND HEADING*/}
           <div className="navbar-collapse">
             <i id="cookie-icon" className="fas fa-cookie-bite"></i>
             <Link to="/" className="navbar-brand fas">
               {" "}
               Recipe Finder
             </Link>
-
+            {/* COLLAPSING TOGGLE BUTTON*/}
             <button
                 className="navbar-toggler"
                 type="button"
@@ -43,6 +42,8 @@ class NavbarComponent extends React.Component {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
+
+            {/*NAVBAR LINKS*/}
             <div className={(navCollapsed ? 'collapse' : '') + ' navbar-collapse'}>
               <ul className="navbar-nav justify-content-end">
                 <li className="nav-item">
@@ -63,7 +64,8 @@ class NavbarComponent extends React.Component {
                       </Link>
                     </li>
                 )}
-                {(this.props.userRole === 'USER' || this.props.userRole === 'ADMIN') && (
+                {(this.props.userRole === 'USER' || this.props.userRole === 'ADMIN')
+                && (
                     <li className="nav-item" >
                       <a className="nav-link" href="/" onClick={logout}>
                         Logout
@@ -75,7 +77,7 @@ class NavbarComponent extends React.Component {
                     Profile
                   </Link>
                 </li>
-                <li className="nav-item" id="privacy-policy">
+                <li className="nav-item">
                   <Link to="/privacy-policy" className="nav-link">
                     Privacy Policy
                   </Link>
