@@ -51,7 +51,9 @@ const addCreatedRecipeToUser = async (recipe, userId) => {
 
 const updateUser = (userId, newUser) => {
   //query to find it, updated data, returns the actual updated data
-  return userModel.update({ _id: userId }, newUser, { new: true });
+  return userModel.findOneAndUpdate({ _id: userId }, newUser, { new: true })
+      .populate("subscribedUsers", "username")
+      .populate("followers", "username")
 };
 
 const findUserByCredentials = (username, password) => {

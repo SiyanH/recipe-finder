@@ -11,10 +11,7 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.findProfile()
-            .then(() => {
-                console.log(this.props.profile);
-                return findFollowers(this.props.profile._id)
-            })
+            .then(() => findFollowers(this.props.profile._id))
             .then(followers => this.setState({followers: followers}));
     }
 
