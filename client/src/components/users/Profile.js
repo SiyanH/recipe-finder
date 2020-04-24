@@ -44,7 +44,7 @@ class Profile extends React.Component {
                 </div>
             )}
 
-        {/* PROFILE BUTTONS*/}
+            {/* PROFILE BUTTONS*/}
             {this.props.profile.username && (
               <button
                 onClick={() => this.props.history.push("./update-profile")}
@@ -91,19 +91,19 @@ class Profile extends React.Component {
               Home
             </button>
 
-            {this.props.profile.username && (
-
-              <div>
-                <p className="jumbotron jumbtron-fluid"> Chefs Who Follow Me! </p>
-                <p className="jumbotron"> Chefs That Follow Me! </p>
-
-                <ul className="list-group">
-                  {this.props.profile.followers.map((follower) => (
+            <p className="jumbotron"> Cooks I Follow! </p>
+            <ul className="list-group">
+                {this.props.profile.subscribedUsers.map((subscribedUser) => (
+                    <li className="list-group-item">{subscribedUser}</li>
+                ))}
+            </ul>
+            <p className="jumbotron"> Cooks That Follow Me! </p>
+            <p>{this.props.profile.followers}</p>
+            <ul className="list-group">
+                {this.props.profile.followers.map((follower) => (
                     <li className="list-group-item">{follower}</li>
-                  ))}
-                </ul>{" "}
-              </div>
-            )}
+                ))}
+            </ul>
         </div>
     );
   }
