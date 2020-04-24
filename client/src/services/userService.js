@@ -2,7 +2,12 @@ import axios from "axios";
 
 //register a user
 export const register = (user) =>
-  axios.post("/api/users", user).then((res) => console.log(res));
+  axios
+    .post("/api/users", user)
+    .then((res) => console.log(res))
+    .catch((err) => {
+      console.log("services:error");
+    });
 
 //open user profile
 export const profile = async () => axios.get("/api/users/profile");

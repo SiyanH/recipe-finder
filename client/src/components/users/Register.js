@@ -12,7 +12,14 @@ export default class Register extends React.Component {
   };
   //if username is already taken you have to get something else ***
   handleregister = (user) =>
-    register(user).then((newUser) => this.props.history.push("./profile"));
+    register(user)
+      .then((newUser) => {
+        console.log(newUser);
+        this.props.history.push("./profile");
+      })
+      .catch((err) => {
+        console.log("Register:error");
+      });
 
   onRadioChange = (e) => {
     this.setState({
