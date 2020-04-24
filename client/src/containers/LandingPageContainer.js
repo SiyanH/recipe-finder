@@ -23,6 +23,7 @@ import Home from "../components/Home";
 
 import userReducer from "../reducers/userReducer";
 import PublicProfile from "../components/users/PublicProfile";
+import SubscriptionInformation from "../components/users/SubscriptionInformation";
 
 const reducer = combineReducers({ user: userReducer, recipe: recipeReducer });
 const store = createStore(reducer);
@@ -57,6 +58,11 @@ class LandingPageContainer extends Component {
 
           <Route path="/register" exact={true} component={Register} />
           <Route path="/profile" exact={true} component={Profile} />
+          <Route
+            path="/subscriptions"
+            exact={true}
+            component={SubscriptionInformation}
+          />
 
           <Route path="/login" exact={true} component={Login} />
           <Route
@@ -77,9 +83,11 @@ class LandingPageContainer extends Component {
             component={UserCreatedRecipe}
           />
           <Route
-              path="/profile/:username"
-              exact={true}
-              render={(props) => <PublicProfile username={props.match.params.username}/>}
+            path="/profile/:username"
+            exact={true}
+            render={(props) => (
+              <PublicProfile username={props.match.params.username} />
+            )}
           />
         </Router>
       </Provider>
