@@ -12,6 +12,7 @@ class LikedRecipesComponent extends Component {
           <ul>
             {this.props.recipes.map((recipe) => (
               <li key={recipe}>
+                <br />
                 <a href={recipe}>{recipe}</a>
               </li>
             ))}
