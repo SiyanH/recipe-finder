@@ -31,7 +31,7 @@ export default class SubscriptionInformation extends Component {
           <CreatedRecipeList recipes={this.state.recipes} />
         )}
         {this.state.recipes.length === 0 && (
-          <p>This user currently does not have recipes...</p>
+          <p>This user currently does not have recipes.</p>
         )}
       </div>
     );
