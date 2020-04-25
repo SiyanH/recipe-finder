@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import userService from "../services/userService";
+import { profile } from "../services/userService";
 import "./NavbarComponent.css";
 import { connect } from "react-redux";
 import { logout } from "../services/userService";
+import { findProfile } from "../actions/userActions";
 
 class NavbarComponent extends React.Component {
   state = {
@@ -12,7 +13,9 @@ class NavbarComponent extends React.Component {
   };
 
   componentDidMount() {
-    userService.findAllUsers().then();
+    if (!this.props.userId) {
+      this.props.findProfile().then();
+    }
   }
 
   toggleNav = () => {
@@ -50,10 +53,11 @@ class NavbarComponent extends React.Component {
           >
             <ul className="navbar-nav justify-content-end">
               <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  Login
+                <Link to="/" className="nav-link">
+                  Home
                 </Link>
               </li>
+
               {this.props.userRole === undefined && (
                 <li className="nav-item">
                   <Link to="/login" className="nav-link">
@@ -77,22 +81,11 @@ class NavbarComponent extends React.Component {
                 </li>
               )}
               <li className="nav-item">
-                <Link to="/register" className="nav-link">
-                  Register
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/privacy-policy" className="nav-link">
-                  Privacy Policy
-                </Link>
-              </li>
-              )}
-              <li className="nav-item">
                 <Link to="/profile" className="nav-link">
                   Profile
                 </Link>
               </li>
-              <li className="nav-item" id="privacy-policy">
+              <li className="nav-item">
                 <Link to="/privacy-policy" className="nav-link">
                   Privacy Policy
                 </Link>
@@ -104,10 +97,22 @@ class NavbarComponent extends React.Component {
     );
   }
 }
+
 const stateToPropertyMapper = (state) => {
   return {
     userRole: state.user.profile.role,
+    userId: state.user.profile._id,
   };
 };
 
-export default connect(stateToPropertyMapper)(NavbarComponent);
+const dispatchToPropertyMapper = (dispatch) => {
+  return {
+    findProfile: () =>
+      profile().then((profile) => dispatch(findProfile(profile.data))),
+  };
+};
+
+export default connect(
+  stateToPropertyMapper,
+  dispatchToPropertyMapper
+)(NavbarComponent);

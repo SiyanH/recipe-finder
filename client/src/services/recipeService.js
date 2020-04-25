@@ -17,6 +17,10 @@ export const findRecipes = (query, from, to) => {
 export const findUserCreatedRecipes = (uid) =>
     fetch(`/api/users/${uid}/recipes`).then(res => res.json());
 
+export const deleteRecipe = (rid) =>
+    fetch(`/api/recipes/${rid}`, {method: 'DELETE'})
+        .then(res => res.json());
+
 export default {
     findRecipes,
     findUserCreatedRecipes
