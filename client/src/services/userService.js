@@ -45,8 +45,6 @@ export const findUserByUsername = (username) =>
 export const findFollowers = (userId) =>
     axios.get(`/api/users/${userId}/followers`).then(res => res.data);
 
-export const findFollowers = (userId) =>
-    axios.get(`/api/users/${userId}/followers`).then(res => res.data);
 
 //implement update user
 // export const updateprofile = (user) =>
