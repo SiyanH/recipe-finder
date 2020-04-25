@@ -16,7 +16,6 @@ export default class Login extends React.Component {
     try {
       this.setState({ error: false });
       await login(user);
-      console.log({ user });
       this.props.history.push("./profile");
     } catch (e) {
       this.setState({ error: true });
@@ -29,9 +28,7 @@ export default class Login extends React.Component {
         {/*<p>{JSON.stringify(this.state)}</p>*/}
         <div className="container mt-4 mb-4">
           <h1 className="display-6 app-header-font">Login</h1>
-          {this.state.error && (
-            <p>Your password and username doesn't match</p>
-          )}
+          {this.state.error && <p>Your password and username doesn't match</p>}
           <input
             value={this.state.user.username}
             onChange={(e) => {

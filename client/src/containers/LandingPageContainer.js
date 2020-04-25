@@ -17,10 +17,9 @@ import UpdateProfile from "../components/users/UpdateProfile";
 import PrivacyPolicy from "../components/PrivacyPolicy";
 import UserListComponent from "../components/users/UserListComponent";
 import LikedRecipesComponent from "../components/users/LikedRecipesComponent";
-import UserCreatedRecipe from "../components/users/UserCreatedRecipe";
+import UserCreatedRecipe from "./users/UserCreatedRecipe";
 import userReducer from "../reducers/userReducer";
 import PublicProfile from "../components/users/PublicProfile";
-import SubscriptionInformation from "../components/users/SubscriptionInformation";
 
 const reducer = combineReducers({ user: userReducer, recipe: recipeReducer });
 const store = createStore(reducer);
