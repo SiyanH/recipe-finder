@@ -2,7 +2,7 @@ import React from "react";
 import {createRecipe} from "../../services/userService";
 import {findUserCreatedRecipes} from "../../services/recipeService";
 import {connect} from "react-redux";
-import CreatedRecipeList from "./CreatedRecipeList";
+import CreatedRecipeList from "../../components/users/CreatedRecipeList";
 
 class UserCreatedRecipe extends React.Component {
     state = {
@@ -15,7 +15,7 @@ class UserCreatedRecipe extends React.Component {
     };
 
     componentDidMount() {
-       this.findRecipes();
+        this.findRecipes();
     }
 
     findRecipes = () => {
@@ -95,7 +95,9 @@ class UserCreatedRecipe extends React.Component {
                     Home
                 </button>
                 <br/>
-                <CreatedRecipeList recipes={this.state.recipes}/>
+                <CreatedRecipeList
+                    userId={this.props.userId}
+                    recipes={this.state.recipes}/>
             </div>
         );
     }

@@ -36,9 +36,12 @@ class CreatedRecipeList extends Component {
                                     <p>{recipe.userProvidedIngredients}</p>
                                     <h5 className="card-title">Instructions</h5>
                                     <p>{recipe.userProvidedInstructions}</p>
-                                    <button className="btn btn-sm app-primary-button"
-                                    onClick={() => this.delete(recipe._id)}>Delete
-                                    </button>
+                                    {
+                                        this.props.userId &&
+                                        <button className="btn btn-sm app-primary-button"
+                                                onClick={() => this.delete(recipe._id)}>Delete
+                                        </button>
+                                    }
                                 </div>
                             </div>)
                 }
