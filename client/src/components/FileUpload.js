@@ -87,7 +87,7 @@ const FileUpload = () => {
         <input
           type="submit"
           value="Upload"
-          className="btn btn-primary btn-block app-margin-block app-primary-button"
+          className="btn btn-block app-margin-block app-primary-button"
         />
       </form>
       {/* Uploaded file renders make title look better (if possible align */}
