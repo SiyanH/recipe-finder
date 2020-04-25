@@ -28,9 +28,8 @@ const findUserByUserName = (userName) => {
 
 const addEdamamRecipeToUser = async (url, userId) => {
   const user = await findUserById(userId);
-  console.log({ user });
   //query to find it, updated data, return the actual data
-  return userModel.updateOne(
+  return userModel.findOneAndUpdate(
     {
       _id: userId,
     },

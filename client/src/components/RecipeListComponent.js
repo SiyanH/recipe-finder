@@ -23,7 +23,7 @@ class RecipeListComponent extends Component {
                 {
                     this.props.recipes
                         .map((recipeInfo, index) =>
-                                 <Link key={index}
+                                 <Link key={recipeInfo.recipe.uri}
                                        to={`/recipes/${this.props.query}/${this.props.from
                                                                            + index}`}
                                        className={`list-group-item list-group-item-action
