@@ -1,8 +1,10 @@
 import React from "react";
-import { createRecipe } from "../../services/userService";
-import { findUserCreatedRecipes } from "../../services/recipeService";
-import { connect } from "react-redux";
+import {createRecipe, profile} from "../../services/userService";
+import {findUserCreatedRecipes} from "../../services/recipeService";
+import {connect} from "react-redux";
+
 import CreatedRecipeList from "../../components/users/CreatedRecipeList";
+import {findProfile} from "../../actions/userActions";
 
 class UserCreatedRecipe extends React.Component {
   state = {
@@ -14,9 +16,15 @@ class UserCreatedRecipe extends React.Component {
     },
   };
 
-  componentDidMount() {
-    this.findRecipes();
-  }
+    componentDidMount() {
+        if (!this.props.userId) {
+            this.props.findProfile()
+                .then(() => this.findRecipes());
+        } else {
+            this.findRecipes();
+        }
+    }
+
 
   findRecipes = () => {
     findUserCreatedRecipes(this.props.userId).then((recipes) =>
@@ -107,4 +115,11 @@ const stateToPropertyMapper = (state) => {
   };
 };
 
-export default connect(stateToPropertyMapper)(UserCreatedRecipe);
+const dispatchToPropertyMapper = (dispatch) => {
+    return {
+        findProfile: () =>
+            profile().then(profile => dispatch(findProfile(profile.data))),
+    };
+};
+
+export default connect(stateToPropertyMapper, dispatchToPropertyMapper)(UserCreatedRecipe);
