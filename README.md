@@ -4,7 +4,7 @@ A seamless web app that allows for finding, saving, and sharing recipes through 
 
 [Live demo](https://stormy-gorge-15727.herokuapp.com) (*Please note that the live demo is hosted on Heroku and it may take few minutes to start when you visit it.*)
 
-**The Google Cloud Vision API for this app is currently disabled due to secruity concerns so you can't test the image recognition feature at this time.**
+**The Google Cloud Vision API for this app is currently disabled due to secruity concerns so you can't test the image recognition feature at this time. The Edamam Recipe API has been removed from this repo for the same reason but you can still try it in the live demo.**
 
 ## Introduction
 
