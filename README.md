@@ -4,6 +4,8 @@ A seamless web app that allows for finding, saving, and sharing recipes through 
 
 [Live demo](https://stormy-gorge-15727.herokuapp.com) (*Please note that the live demo is hosted on Heroku and it may take few minutes to start when you visit it.*)
 
+**The Google Cloud Vision API for this app is currently disabled due to secruity concerns so you can't test the image recognition feature at this time.**
+
 ## Introduction
 
 Have you ever looked at a delicious dish and wondered what is the recipe? There are times when we come across food and do not know exactly what it’s called but would like to know how to make it. Our app can remedy this! With our app, users can take pictures of their food and our page will display recipes associated with the image. Users also have the option to connect with each other by displaying their favorite recipes in public recipe lists on their profiles.
