@@ -7,7 +7,7 @@ const getRecipes = async (dishes) => {
   let response = {};
   try {
     response = await axios.get(
-      `***REMOVED***&q=${dishes}&from=0&to=1`
+      `**REMOVED**`
     );
   } catch {
     console.error("There's an error while fetching the data");
