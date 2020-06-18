@@ -6,9 +6,15 @@ A seamless web app that allows for finding, saving, and sharing recipes through 
 
 **The Google Cloud Vision API for this app is currently disabled due to secruity concerns so you can't test the image recognition feature at this time. The Edamam Recipe API has been removed from this repo for the same reason but you can still try it in the live demo.**
 
+![Recipe Finder - Main Page](pics/index.png)
+
 ## Introduction
 
 Have you ever looked at a delicious dish and wondered what is the recipe? There are times when we come across food and do not know exactly what it’s called but would like to know how to make it. Our app can remedy this! With our app, users can take pictures of their food and our page will display recipes associated with the image. Users also have the option to connect with each other by displaying their favorite recipes in public recipe lists on their profiles.
+
+![Recipe Finder - Search Result](pics/search.png)
+
+![Recipe Finder - Profile Page](pics/profile.png)
 
 ## User Roles
 
